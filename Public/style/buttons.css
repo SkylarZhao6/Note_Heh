@@ -3,7 +3,7 @@
 } */
 
 /* button text */
-.btn p, .btn02 p, .hardbtn p{
+.btn p, .btn span, .btn02 p, .btn02 span, .hardbtn p, .hardbtn span {
     user-select: none;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
@@ -14,19 +14,19 @@
     align-self: center;
 }
 
-.btn p{
+.btn p, .btn span {
     color: #f7f7f7;
 }
 
-.btn02 p{
+.btn02 p, .btn02 span {
     color: #000000;
 }
 
-.hardbtn p {
+.hardbtn p, .hardbtn span {
     color: #ffffff;
 }
 
-/* Button Border*/
+/* Button*/
 .hardbtn, .btn, .btn02{
     height: 44px;
     width: 200px;
@@ -38,6 +38,7 @@
     cursor: pointer;
     transition: all 300ms;
     margin: 60px;
+    text-decoration: none;
 }
 
 .btn {

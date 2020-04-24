@@ -3,7 +3,11 @@ body {
     padding: 0;
     background: #145844;
 }
-
+  
+.App {
+  text-align: center;
+}
+  
 #logo-text {
     position: absolute;
     left: 40%;
@@ -30,7 +34,7 @@ body {
       transform: rotateX(90deg);
     }
 }
-
+  
 .greet {
     animation-name: fadeIn;
     animation-duration: 6s;
@@ -45,23 +49,22 @@ body {
         opacity: 1;
     }
 }
-
+  
 #logo{
     position: absolute;
-    left: 12.08%;
-    right: 63.77%;
+    left: 20%;
+    right: 60%;
     top: 31.58%;
     bottom: 58.6%;
 }
-
+  
 h2{
     position: absolute;
-    left: 13.77%;
-    right: 19.81%;
-    top: 43.75%;
-    bottom: 46.76%;
-
-    font-family: Canaro;
+    left: 20%;
+    right: 20%;
+    top: 50%;
+    bottom: 50%;
+  
     font-style: normal;
     font-weight: 300;
     font-size: 36px;
@@ -71,23 +74,20 @@ h2{
     letter-spacing: 0.22px;
     color: #E8EFF5;
 }
-
+  
 .btn {
     position: absolute;
-    left: 70%;
-    right: 40%;
-    top: 60%;
-    bottom: 70%;
-}
-
-.btn02 {
-    position: absolute;
-    left: 13%;
+    left: 20%;
     right: 10%;
     top: 60%;
     bottom: 70%;
 }
-
-
   
-
+.btn02 {
+    position: absolute;
+    left: 60%;
+    right: 30%;
+    top: 60%;
+    bottom: 70%;
+}
+  

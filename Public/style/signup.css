@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+body {
+    background-color: #e6e6e6;
+}
+
 h1 {
     color: #358E76;
 }
@@ -35,5 +39,11 @@ input {
     height: 30px;
 }
 
+/* login page */
+#logo {
+    position: relative;
+    right: 5%;
+    fill: #266B59;
+}
 
 

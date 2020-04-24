@@ -16,7 +16,7 @@ h3 {
     font-weight: 400;
 }
 
-p {
+p, label, span{
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 300;
