@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Public/style/signup.css">
+    <link rel="stylesheet" href="../Public/style/buttons.css">
+    <link rel="stylesheet" href="../Public/style/text.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <div>
+        <h1>Sign Up</h1>
+
+        <form class="fields" method="POST">
+            <div class="field">
+                <label>Let's start with your name.</label>
+                </br>
+                <input class="txtInfo" name="firstName" type="text" placeholder="First Name" required></input>
+                </br>
+                <input class="txtInfo" name="lastName" type="text" placeholder="Last Name" required></input>
+                </br>
+
+                <label>Enter a valid email address.</label>
+                </br>
+                <input class="txtInfo" name="email" type="email" placeholder="someone@example.com" required></input>
+                </br>
+
+                <label>When is your birthday?</label>
+                </br>
+                <input class="bdInfo" name="day" placeholder="Day, eg. 14"></input>
+                </br> 
+                <input class="bdInfo" name="month" placeholder="Month, eg. 4"></input>
+                </br>
+                <input class="bdInfo" name="year" placeholder="Year, eg. 1990"></input>  
+                </div>
+         
+                <label>Set a password</label>
+                </br>   
+                <input class="txtInfo" name="password" type="password" placeholder="Password" required></input>
+            </div>                
+            </br>
+
+            <button class="hardbtn" type="submit">
+                <span>Proceed</span>
+            </button>
+        </form>
+    </div>
+</body>
+</html>
