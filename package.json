@@ -1,0 +1,23 @@
+{
+  "name": "note_heh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkylarZhao6/Note_Heh.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkylarZhao6/Note_Heh/issues"
+  },
+  "homepage": "https://github.com/SkylarZhao6/Note_Heh#readme",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "nodemon": "^2.0.3"
+  }
+}

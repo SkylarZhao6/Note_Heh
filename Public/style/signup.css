@@ -1,0 +1,39 @@
+/* font link unfinished */
+* {
+    text-align: center;
+    align-items: center;
+}
+
+h1 {
+    color: #358E76;
+}
+
+.fields {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    color:grey;
+    box-shadow: 1px 1px 5px;
+    border: #358E76 1px solid;
+    border-radius: 15px;
+    text-indent: 15px;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+}
+
+.txtInfo {
+    width: 500px;
+    height: 30px;
+}
+
+.bdInfo {
+    width: 100px;
+    height: 30px;
+}
+
+
+
