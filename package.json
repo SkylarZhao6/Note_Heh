@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/SkylarZhao6/Note_Heh#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.6",
     "nodemon": "^2.0.3"
   }
 }
