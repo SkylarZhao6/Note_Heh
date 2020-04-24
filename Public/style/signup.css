@@ -1,4 +1,3 @@
-/* font link unfinished */
 * {
     text-align: center;
     align-items: center;
@@ -37,6 +36,7 @@ input {
 .bdInfo {
     width: 100px;
     height: 30px;
+    display: inline-block;
 }
 
 /* login page */
