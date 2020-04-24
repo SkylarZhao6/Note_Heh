@@ -1,0 +1,33 @@
+/*add new button*/
+
+.whitebtn {
+    background-color:#ffffff;
+    height: 98px;
+    width: 350px;
+    display: inline-flex;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 24px;
+    margin-left: 20px;
+    color: #358E76;
+}
+
+.plusbtn {
+    height: 50px;
+    width: 50px;
+    background: #358E76;
+    border: 3px solid #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    position: relative;
+    left: 40%;
+    align-items: center;
+    justify-content: center;
+}
