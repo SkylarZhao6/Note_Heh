@@ -28,6 +28,11 @@
     border-radius: 15px;
     position: relative;
     left: 40%;
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.fa-plus {
+    color: #ffffff;
 }
