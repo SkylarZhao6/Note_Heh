@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #145844;
+}
+
+#logo-text {
+    position: absolute;
+    left: 40%;
+    right: 40%;
+    top: 40%;
+    bottom: 40%;
+    animation-name: fadeOut;
+    animation-duration: 3s;
+    animation-delay: 0.7s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeOut{
+    0%{
+      opacity: 1;
+      transform: rotateX(90deg);
+    }
+    50%{
+      opacity: 0.5;
+      transform: rotateX(90deg);
+    }
+    100%{
+      display: none;
+      opacity: 0;
+      transform: rotateX(90deg);
+    }
+}
+
+.greet {
+    animation-name: fadeIn;
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeIn{
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#logo{
+    position: absolute;
+    left: 12.08%;
+    right: 63.77%;
+    top: 31.58%;
+    bottom: 58.6%;
+}
+
+h2{
+    position: absolute;
+    left: 13.77%;
+    right: 19.81%;
+    top: 43.75%;
+    bottom: 46.76%;
+
+    font-family: Canaro;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: flex-end;
+    letter-spacing: 0.22px;
+    color: #E8EFF5;
+}
+
+.btn {
+    position: absolute;
+    left: 70%;
+    right: 40%;
+    top: 60%;
+    bottom: 70%;
+}
+
+.btn02 {
+    position: absolute;
+    left: 13%;
+    right: 10%;
+    top: 60%;
+    bottom: 70%;
+}
+
+
+  
+
