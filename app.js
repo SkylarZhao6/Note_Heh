@@ -1,9 +1,7 @@
 const express = require("express");
 const app = express();
+const routes = require("./routes/index")
 
-module.exports = () => {
-    app.use(express.static("Public"));
-    app.set("view engine", "ejs");
+app.use("/", routes);
 
-    
-}
+module.exports = app;
