@@ -11,7 +11,7 @@ module.exports = (database, jwt) => {
     app.use(bodyParser.json());
 
     // serve landing page
-    const landingRoute = require("./routes/landingRoute.js")();
+    const landingRoute = require("./routes/indexRoute.js")();
     app.use("/", landingRoute);
 
     // serve auth pages
