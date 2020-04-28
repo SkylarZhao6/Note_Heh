@@ -1,22 +1,22 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-// const routes = require("./routes/index")
 
-// app.use("/", routes);
-
-// module.exports = app;
-
-module.exports = function() {
+module.exports = (database, jwt) => {
+    // serve static front-end code
     app.use(express.static("Public"));
     app.set("view engine", "ejs");
+
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
-    // landing
-    const indexRoute = require("./routes/indexRoute.js")();
-    app.use("/", indexRoute);
+    // serve landing page
+    const landingRoute = require("./routes/landingRoute.js")();
+    app.use("/", landingRoute);
 
-    // 
+    // serve auth pages
+    const authRoute = require("./routes/authRoute.js")({database, authenticate: jwt.authenticateJWT, generateAccessToken: jwt.generateAccessToken});
+    app.use("/user", authRoute);
+
     return app;
 }

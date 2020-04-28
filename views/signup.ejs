@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Public/style/signup.css">
-    <link rel="stylesheet" href="../Public/style/buttons.css">
-    <link rel="stylesheet" href="../Public/style/text.css">
+    <link rel="stylesheet" href="/style/signup.css">
+    <link rel="stylesheet" href="/style/buttons.css">
+    <link rel="stylesheet" href="/style/text.css">
     <title>Sign Up</title>
-
 </head>
+
 <body>
     <div>
         <h1>Sign Up</h1>
 
-        <form class="fields" method="POST">
+        <form class="fields" method="POST" action="/user/register">
             <div class="field">
                 <label>Let's start with your name.</label>
                 </br>
@@ -42,6 +42,8 @@
                 <input class="txtInfo" name="password" type="password" placeholder="Password" required></input>
             </div>                
 
+        </br>
+        </br>
             <button class="hardbtn" type="submit">
                 <p>Proceed</p>
             </button>

@@ -1,12 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const bcrypt   = require("bcrypt");
-// Import documents
-const User     = require("./models/user");
-const Album    = require("./models/album");
-const List     = require("./models/list");
-const Notebook = require("./models/notebook");
-const Note     = require("./models/note");
 
 module.exports = function(connected) {
     // connect to Mongo DB
@@ -17,8 +11,16 @@ module.exports = function(connected) {
             console.log("Connected to Mongo: " + mongoose.version);
         }
 
+        // Import documents
+        const User     = require("./models/user");
+        const Album    = require("./models/album");
+        const List     = require("./models/list");
+        const Notebook = require("./models/notebook");
+        const Note     = require("./models/note");
+
         // queries to database
-        // insert a new user into User
+
+        // insert a new user
         function createUser(callback, {firstname, lastname, email, password}) {
             bcrypt.hash(password, 12, (err, hashed) => {
                 if (err) {
@@ -38,7 +40,7 @@ module.exports = function(connected) {
             })
         }
         
-        // validate user in User
+        // validate user
         function getUser(callback, inputs) {
             User.findOne({email: inputs.email}, (err, user) => {
                 if (err) {
@@ -55,6 +57,10 @@ module.exports = function(connected) {
                 }
             })
         }
+        connected(null, {
+            createUser,
+            getUser
+        })
     })
 }
 

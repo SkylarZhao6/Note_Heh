@@ -26,13 +26,12 @@
 .hardbtn, .btn, .btn02{
     height: 44px;
     width: 200px;
-    margin: 0 16px;
+    margin: auto 10%;
     border-radius: 30px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 300ms;
-    margin: 60px;
     text-decoration: none;
     display: flex;
 }
