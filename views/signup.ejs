@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Public/style/signup.css">
-    <link rel="stylesheet" href="../Public/style/buttons.css">
-    <link rel="stylesheet" href="../Public/style/text.css">
+    <link rel="stylesheet" href="/style/signup.css">
+    <%- include('./partials/links'); -%>
     <title>Sign Up</title>
-
 </head>
+
 <body>
     <div>
         <h1>Sign Up</h1>
 
-        <form class="fields" method="POST">
+        <form class="fields" method="POST" action="/user/register">
             <div class="field">
                 <label>Let's start with your name.</label>
                 </br>
@@ -27,7 +24,7 @@
                 <input class="txtInfo" name="email" type="email" placeholder="someone@example.com" required></input>
                 </br>
 
-                <label>When is your birthday?</label>
+                <!-- <label>When is your birthday?</label>
                 </br>
                 <input class="bdInfo" name="day" placeholder="Day, eg. 14"></input>
                 </br> 
@@ -35,16 +32,23 @@
                 </br>
                 <input class="bdInfo" name="year" placeholder="Year, eg. 1990"></input>  
                 </div>
+                </br> -->
          
                 <label>Set a password</label>
                 </br>   
                 <input class="txtInfo" name="password" type="password" placeholder="Password" required></input>
             </div>                
 
+        </br>
+        </br>
             <button class="hardbtn" type="submit">
                 <p>Proceed</p>
             </button>
         </form>
     </div>
+
+    <a href="/login" class="redirectLink">
+        <p>Already have an account?</p>
+    </a>
 </body>
 </html>

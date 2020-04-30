@@ -1,18 +1,13 @@
 body {
-    margin: 0;
-    padding: 0;
     background: #145844;
-}
-  
-.App {
-  text-align: center;
 }
   
 #logo-text {
     position: absolute;
-    left: 40%;
-    right: 40%;
-    top: 40%;
+    margin: auto;
+    left: 10%;
+    right: 15%;
+    top: 30%;
     bottom: 40%;
     animation-name: fadeOut;
     animation-duration: 3s;
@@ -53,19 +48,16 @@ body {
 #logo{
     position: absolute;
     left: 20%;
-    right: 60%;
-    top: 31.58%;
-    bottom: 58.6%;
+    top: 20%;
+    margin: auto;
 }
   
 h2{
     position: absolute;
+    margin: auto;
     left: 20%;
-    right: 20%;
-    top: 50%;
-    bottom: 50%;
+    top: 35%;
   
-    font-style: normal;
     font-weight: 300;
     font-size: 36px;
     line-height: 43px;
@@ -76,18 +68,16 @@ h2{
 }
   
 .btn {
+    margin: auto;
     position: absolute;
-    left: 20%;
-    right: 10%;
+    left: 15%;
     top: 60%;
-    bottom: 70%;
 }
   
 .btn02 {
+    margin: auto;
     position: absolute;
-    left: 60%;
-    right: 30%;
-    top: 60%;
-    bottom: 70%;
+    left: 15%;
+    top: 70%;
 }
   
