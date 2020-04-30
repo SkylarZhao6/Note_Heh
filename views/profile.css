@@ -1,0 +1,28 @@
+.settingTab{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+    height: 70px;
+    background: #FFFFFF;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.settingTxt {
+    position: relative;
+    line-height: 29px;
+    letter-spacing: 0.22px;
+    justify-content: center;
+    text-align: center;
+    top: 30%;
+}
+
+.changes {
+    width: 100%;
+    text-align: center;
+}
+
+/* .changes button {
+    display: inline-block;
+} */

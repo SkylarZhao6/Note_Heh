@@ -31,7 +31,10 @@ i {
 /* search bar */
 .SB_container {
     position: absolute;
-    left: 10%;
+    top: 12%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 .SearchBar {
@@ -70,7 +73,9 @@ i {
 .whitebtn {
     background-color:#ffffff;
     height: 70px;
-    width: 300px;
+    width: 350px;
+    margin-left: auto; 
+    margin-right: auto;
     display: inline-flex;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
