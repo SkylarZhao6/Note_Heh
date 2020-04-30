@@ -4,11 +4,11 @@ const router = express.Router();
 module.exports = ({ database, authenticate, generateAccessToken }) => {
     // log user in
     router.post("/signin", (req, res) => {
-        const {email, password} = req.body;
+        const { email, password } = req.body;
 
         database.getUser((err, user) => {
             if (err) {
-                res.send({error}); return
+                res.send("error"); return
             }
 
             if (!user) {
@@ -16,11 +16,9 @@ module.exports = ({ database, authenticate, generateAccessToken }) => {
             }
 
             const accessToken = generateAccessToken({ email, user_id: user._id });
-            res.send({ accessToken: accessToken })
-        }, { email, password });
-
-        // redirect to home page??
-        res.redirect("landing");
+            res.send({ accessToken: accessToken });
+            res.redirect("landing");
+        }, { email, password })
     });
 
     // create a new user
@@ -41,11 +39,13 @@ module.exports = ({ database, authenticate, generateAccessToken }) => {
                     res.send("error"); return
                 }
                 const accessToken = generateAccessToken({ email: user.email, user_id: user.id});
-                res.send({ accessToken: accessToken});
+                res.send({ accessToken: accessToken });
+
+                res.redirect("landing");
             }, { email: req.body.email, password: req.body.password});
 
         }, {email: req.body.email});
-        res.redirect("landing");
+        
     });
 
     return router;

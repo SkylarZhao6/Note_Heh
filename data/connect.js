@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const bcrypt   = require("bcrypt");
+const bcrypt   = require("bcrypt");   
 
 module.exports = function(connected) {
     // connect to Mongo DB

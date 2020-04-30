@@ -5,7 +5,7 @@ require("./data/connect")((err, database) => {
         throw err;
     }
 
-    const jwt = require("./middleware/jwt");
+    const jwt     = require("./middleware/jwt");
     const express = require("./app")(database, jwt);
 
     const PORT    = process.env.PORT;

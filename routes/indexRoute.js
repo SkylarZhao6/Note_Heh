@@ -14,5 +14,9 @@ module.exports = () => {
         res.render("signup");
     })
     
+    router.get("/main", (req, res) => {
+        res.render("main");
+    })
+    
     return router;
 }
