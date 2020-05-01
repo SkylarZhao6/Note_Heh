@@ -21,6 +21,6 @@ module.exports = () => {
     router.get("/album", (req, res) => {
         res.render("image");
     })
-    
+
     return router;
 }

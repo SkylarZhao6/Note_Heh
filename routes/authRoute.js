@@ -1,52 +1,80 @@
 const express = require("express");
 const router = express.Router();
 
-module.exports = (database,jwt) => {
-    // log user in
-    router.post("/signin", (req, res) => {
-        const { email, password } = req.body;
+module.exports = (database, jwt) => {
+	// log user in
+	router.post("/signin", (req, res) => {
+		const { email, password } = req.body;
 
-        database.getUser((err, user) => {
-            if (err) {
-                res.send("error"); return
-            }
+		database.getUser(
+			(err, user) => {
+				if (err) {
+					res.send("error");
+					return;
+				}
 
-            if (!user) {
-                res.send("Incorrect username or password"); return
-            }
+				if (!user) {
+					res.send("Incorrect username or password");
+					return;
+				}
 
-            const accessToken = jwt.generateAccessToken({ email, user_id: user._id });
-            res.send({ accessToken: accessToken });
-            res.redirect("main");
-        }, { email, password })
-    });
+				const accessToken = jwt.generateAccessToken({
+					email,
+					user_id: user._id,
+                });
+                res.redirect("/main");
+				// res.send({ accessToken: accessToken });
+				
+			},
+			{ email, password }
+		);
+	});
 
-    // create a new user
-    router.post("/register", (req, res) => {
-        // check if the email exists
-        database.getUser((err, user) => {
-            if (err) {
-                console.log(err);
-                res.send("error"); return
-            }
-            if (user) {
-                res.send("Email has been taken"); return
-            }
+	// create a new user
+	router.post("/register", (req, res) => {
+		// check if the email exists
+		database.getUser(
+			(err, user) => {
+				if (err) {
+					console.log(err.message);
+					res.send("error");
+					return;
+				}
+				if (user) {
+					res.send("Email has been taken");
+					return;
+				}
 
-            // create the user
-            database.createUser((err, user) => {
-                if (err) {
-                    res.send("error"); return
-                }
-                const accessToken = jwt.generateAccessToken({ email: user.email, user_id: user.id});
-                res.send({ accessToken: accessToken });
+				console.log(req.body);
 
-                res.redirect("main");
-            }, { email: req.body.email, password: req.body.password});
+				// create the user
+				database.createUser(
+					(err, user) => {
+						if (err) {
+							res.send("error");
+							return;
+						}
 
-        }, {email: req.body.email});
-        
-    });
+						//add an expiry date for cookie then once it expired it will go away
+						const accessToken = jwt.generateAccessToken({
+							email: user.email,
+							user_id: user.id,
+						});
+						// res.send({ accessToken: accessToken });
 
-    return router;
-}
+						res.redirect("/main");
+					},
+					{
+						firstname: req.body.firstName,
+						lastname: req.body.lastName,
+						email: req.body.email,
+						password: req.body.password,
+					}
+				);
+			},
+			{ email: req.body.email }
+		);
+	});
+
+	return router;
+};
