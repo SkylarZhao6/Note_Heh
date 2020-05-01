@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-module.exports = ({ database, authenticate, generateAccessToken }) => {
+module.exports = (database,jwt) => {
     // log user in
     router.post("/signin", (req, res) => {
         const { email, password } = req.body;
@@ -15,9 +15,9 @@ module.exports = ({ database, authenticate, generateAccessToken }) => {
                 res.send("Incorrect username or password"); return
             }
 
-            const accessToken = generateAccessToken({ email, user_id: user._id });
+            const accessToken = jwt.generateAccessToken({ email, user_id: user._id });
             res.send({ accessToken: accessToken });
-            res.redirect("landing");
+            res.redirect("main");
         }, { email, password })
     });
 
@@ -38,10 +38,10 @@ module.exports = ({ database, authenticate, generateAccessToken }) => {
                 if (err) {
                     res.send("error"); return
                 }
-                const accessToken = generateAccessToken({ email: user.email, user_id: user.id});
+                const accessToken = jwt.generateAccessToken({ email: user.email, user_id: user.id});
                 res.send({ accessToken: accessToken });
 
-                res.redirect("landing");
+                res.redirect("main");
             }, { email: req.body.email, password: req.body.password});
 
         }, {email: req.body.email});
