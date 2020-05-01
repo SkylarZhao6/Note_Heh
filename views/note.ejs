@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/links'); %>
+    <link rel="stylesheet" href="/style/note.css">
+    <title>Add Note</title>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+
+    <content>
+        <textarea id="title" name="noteTitle" placeholder="Add Title"></textarea>
+    </br>
+        <textarea id="content" name="note" placeholder="Content"></textarea>  
+    </content>
+
+</br>
+
+    <button type="submit" class="hardbtn" name="submit">
+        <p>Save</p>
+    </button>
+
+    <%- include('./partials/noteFooter'); %>
+</body>
+</html>

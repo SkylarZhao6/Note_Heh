@@ -14,11 +14,15 @@ module.exports = (database, jwt) => {
     app.use("/", landingRoute);
 
     // serve auth pages
-    const authRoute = require("./routes/authRoute.js")({database, authenticate: jwt.authenticateJWT, generateAccessToken: jwt.generateAccessToken});
+    // const authRoute = require("./routes/authRoute.js")({database, authenticate: jwt.authenticateJWT, generateAccessToken: jwt.generateAccessToken});
+    const authRoute = require("./routes/authRoute")(database, jwt);
     app.use("/user", authRoute);
 
-    // const mainRoute = require("./routes/mainRoute.js")();
-    // app.use("/main", mainRoute);
+    const mainRoute = require("./routes/mainRoute")();
+    app.use("/main", mainRoute);
 
+    const secureRoute = require("./routes/secureRoute")();
+    app.use("/secure", secureRoute);
+    
     return app;
 }

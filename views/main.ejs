@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('./partials/links') %>
+    <%- include('./partials/links'); %>
     <title>Main</title>
 </head>
 
 <body>
-    <header>
-        <%- include('./partials/searchbar') %>
-    </header>
-    </br>
+    <%- include('./partials/header'); %>
 
-    <content>
-        <%- include('./partials/addNote') %>
-    </br>
-    </br>
-        <%- include('./partials/addList') %>
-    </br>
-    </br>
-        <%- include('./partials/addImage') %>
-    </br>
-    </br>
-    </content>
+    <!-- options -->
+    <div>
+        <a class="whitebtn" href="/secure/image">
+            <div class="icon"></div>
+            <p class="bold">Add Image</p>
+            <div class="plusbtn">
+                <i class="fas fa-plus"></i>
+            </div>
+        </a>
+        </br>
+        </br>
+        <a class="whitebtn" href="/secure/list">
+            <div class="icon"></div>
+            <p class="bold">Add List</p>
+            <div class="plusbtn">
+                <i class="fas fa-plus"></i>
+            </div>
+        </a>
+        <br/>
+        <br/>
+        <a class="whitebtn" href="/secure/note">
+            <div class="icon"></div>
+            <p class="bold">Add Note</p>
+            <div class="plusbtn">
+                <i class="fas fa-plus"></i>
+            </div>
+        </a>
+    </div>
 
-    <footer>
-        <%- include('./partials/menubar) %>
-    </footer>
+    <%- include('./partials/mainFooter'); %>
     
 </body>
 </html>
