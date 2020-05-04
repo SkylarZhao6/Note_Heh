@@ -1,5 +1,7 @@
-const express = require("express");
-const app = express();
+const express      = require("express");
+const cookieParser = require("cookie-parser");
+const cors         = require("cors");
+const app          = express();
 
 module.exports = (database, jwt) => {
     // serve static front-end code
@@ -8,6 +10,8 @@ module.exports = (database, jwt) => {
 
     app.use(express.urlencoded({ extended: false }));
     app.use(express.json());
+    app.use(cookieParser());
+    app.use(cors());
 
     // serve landing page
     const landingRoute = require("./routes/indexRoute.js")();

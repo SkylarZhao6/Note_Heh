@@ -18,9 +18,9 @@ module.exports = () => {
         res.render("note");
     })
 
-    router.get("/album", (req, res) => {
+    router.get("/image", (req, res) => {
         res.render("image");
     })
-    
+
     return router;
 }

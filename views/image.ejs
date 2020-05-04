@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/links'); -%>
+    <link rel="stylesheet" href="/style/img.css">
+    <title>Album</title>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+
+    <%- include('./partials/searchbar'); %>
+
+    <div class="albumOption">
+        <!-- TODO href for each -->
+        <a>
+            <p>All</p>
+        </a>
+
+        <a>
+            <p>Recent</p>
+        </a>
+
+        <a>
+            <p>Starred</p>
+        </a>
+    </div>
+
+    <div class="carousel_border">
+        <div class="imgs">
+            <div class="img01" onclick="toggleLeft(); toggleLeft02(); toggleLeft03()"></div>
+            <div class="img02"></div>
+            <div class="img03" onclick="toggleRight(); toggleRight02(); toggleRight03()"></div>
+        </div>
+
+        <div class="buttons">
+            <div class="btnLeft">
+                <i class="fas fa-angle-left" style="color: black"></i>
+                <button onclick="toggleLeft(); toggleLeft02(); toggleLeft03()"></button>
+            </div>
+            <div class="btnRight">
+                <i class="fas fa-angle-right" style="color: black"></i>
+                <button onclick="toggleRight(); toggleRight02(); toggleRight03()"></button>
+            </div>
+        </div>
+    </br>
+        <div class="albumInfo">
+            <h2>Date</h2>
+
+            <h3>Album Title</h3>
+            
+            <div>
+                <i class="fas fa-images">3</i>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+    <%- include('./partials/imgFooter'); %>
+    <script src="/src/carousel.js"></script>
+</body>
+</html>
