@@ -48,10 +48,10 @@ module.exports = (database, jwt) => {
 
 				// create the user
 				database.createUser((err, user) => {
-						if (err) {
-							res.send("error");
-							return;
-						}
+						// if (err) {
+						// 	res.send("error");
+						// 	return;
+						// }
 						
 						const accessToken = jwt.generateToken({
 							email: user.email,
