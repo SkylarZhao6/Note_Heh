@@ -18,11 +18,11 @@ module.exports = (database, jwt) => {
 					return;
 				}
 
-				const accessToken = jwt.generateToken({
+				const token = jwt.generateToken({
 					email,
 					user_id: user._id,
                 });
-                res.cookie("JWT", { accessToken: accessToken });
+                res.cookie("JWT", { token: token });
 				res.redirect("/main");
 				
 			},
@@ -34,39 +34,38 @@ module.exports = (database, jwt) => {
 	router.post("/register", (req, res) => {
 		// check if the email exists
 		database.getUser((err, user) => {
-				// if (err) {
-				// 	console.log(err.message);
-				// 	res.send("error");
-				// 	return;
-				// }
-				if (user) {
-					res.send("Email has been taken");
+			if (err) {
+				res.send("error");
+				return;
+			}
+			if (user) {
+				res.send("Email has been taken");
+				return;
+			}
+
+			console.log(req.body);
+			// create the user
+			database.createUser((err, user) => {
+				if (err) {
+					console.log(err.message);
+					res.send("error");
 					return;
 				}
-
-				console.log(req.body);
-
-				// create the user
-				database.createUser((err, user) => {
-						// if (err) {
-						// 	res.send("error");
-						// 	return;
-						// }
 						
-						const accessToken = jwt.generateToken({
-							email: user.email,
-							user_id: user.id,
-						});
-						res.cookie("JWT", { accessToken: accessToken });
-						res.redirect("/main");
-					},{
-						// firstname: req.body.firstName,
-						// lastname: req.body.lastName,
-						email: req.body.email,
-						password: req.body.password,
-					});
-			}, { email: req.body.email });
-	});
+				const token = jwt.generateToken({
+					email: user.email,
+					user_id: user.id
+				});
+				res.cookie("JWT", { token: token });
+				res.redirect("/main");
+			}, {
+					firstname: req.body.firstName,
+					lastname: req.body.lastName,
+					email: req.body.email,
+					password: req.body.password
+				});
 
+		}, { email: req.body.email });		
+	});
 	return router;
 };

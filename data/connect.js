@@ -41,6 +41,7 @@ module.exports = function (connected) {
 						const user = res;
 						delete user.password;
 						user.id = user._id;
+						console.log("user ", user);
 						callback(null, user);
 					});
 				});
