@@ -18,12 +18,12 @@ module.exports = (database, jwt) => {
 					return;
 				}
 
-				const accessToken = jwt.generateAccessToken({
+				const accessToken = jwt.generateToken({
 					email,
 					user_id: user._id,
                 });
-                res.redirect("/main");
-				// res.send({ accessToken: accessToken });
+                res.cookie("JWT", { accessToken: accessToken });
+				res.redirect("/main");
 				
 			},
 			{ email, password }
@@ -33,8 +33,7 @@ module.exports = (database, jwt) => {
 	// create a new user
 	router.post("/register", (req, res) => {
 		// check if the email exists
-		database.getUser(
-			(err, user) => {
+		database.getUser((err, user) => {
 				if (err) {
 					console.log(err.message);
 					res.send("error");
@@ -48,20 +47,17 @@ module.exports = (database, jwt) => {
 				console.log(req.body);
 
 				// create the user
-				database.createUser(
-					(err, user) => {
+				database.createUser((err, user) => {
 						if (err) {
 							res.send("error");
 							return;
 						}
-
-						//add an expiry date for cookie then once it expired it will go away
-						const accessToken = jwt.generateAccessToken({
+						
+						const accessToken = jwt.generateToken({
 							email: user.email,
 							user_id: user.id,
 						});
-						// res.send({ accessToken: accessToken });
-
+						res.cookie("JWT", { accessToken: accessToken });
 						res.redirect("/main");
 					},
 					{

@@ -39,7 +39,7 @@ module.exports = function (connected) {
 							return;
 						}
 						const user = res;
-						delete user._doc.password;
+						delete user.password;
 						user.id = user._id;
 						callback(null, user);
 					});
@@ -65,7 +65,7 @@ module.exports = function (connected) {
                         })
                         return;
 					}
-					callback(null, user);
+					callback(null, null);
 				});
 			}
 

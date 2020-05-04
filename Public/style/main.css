@@ -28,6 +28,12 @@ i {
     left: 20px;
 }
 
+.logoutBtn {
+    right: 20px;
+    text-decoration: none;
+    color: white;
+}
+
 /* search bar */
 .SB_container {
     position: absolute;
