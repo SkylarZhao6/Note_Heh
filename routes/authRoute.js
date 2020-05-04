@@ -34,11 +34,11 @@ module.exports = (database, jwt) => {
 	router.post("/register", (req, res) => {
 		// check if the email exists
 		database.getUser((err, user) => {
-				if (err) {
-					console.log(err.message);
-					res.send("error");
-					return;
-				}
+				// if (err) {
+				// 	console.log(err.message);
+				// 	res.send("error");
+				// 	return;
+				// }
 				if (user) {
 					res.send("Email has been taken");
 					return;
