@@ -59,17 +59,13 @@ module.exports = (database, jwt) => {
 						});
 						res.cookie("JWT", { accessToken: accessToken });
 						res.redirect("/main");
-					},
-					{
-						firstname: req.body.firstName,
-						lastname: req.body.lastName,
+					},{
+						// firstname: req.body.firstName,
+						// lastname: req.body.lastName,
 						email: req.body.email,
 						password: req.body.password,
-					}
-				);
-			},
-			{ email: req.body.email }
-		);
+					});
+			}, { email: req.body.email });
 	});
 
 	return router;
