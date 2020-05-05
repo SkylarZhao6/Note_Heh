@@ -11,7 +11,6 @@
     <!-- options -->
     <div>
         <a class="whitebtn" href="/secure/image">
-            <div class="icon"></div>
             <p class="bold">Add Image</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>
@@ -19,8 +18,8 @@
         </a>
         </br>
         </br>
+
         <a class="whitebtn" href="/secure/list">
-            <div class="icon"></div>
             <p class="bold">Add List</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>
@@ -28,16 +27,41 @@
         </a>
         <br/>
         <br/>
-        <a class="whitebtn" href="/secure/note">
-            <div class="icon"></div>
-            <p class="bold">Add Note</p>
+
+        <a class="whitebtn" onclick="openOverlay()">
+            <p class="bold">Add Notebook</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>
             </div>
         </a>
+
+        <!-- Add a new notebook -->
+        <div id="myOverlay" class="overlay">
+            <i class="fas fa-times closebtn" onclick="closeOverlay()"></i>
+            <div class="overlay-content">
+                <form method="GET" action="/secure/note">
+                    <input class="txtInfo" name="notebook" type="text" placeholder="Notebook Title" required></input>
+                    </br>
+
+                    <button type="submit" class="hardbtn">
+                        <p>Save</p>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <%- include('./partials/mainFooter'); %>
-    
+
+<script>
+    function openOverlay() {
+        document.getElementById("myOverlay").style.display = "block";
+    }
+        
+    function closeOverlay() {
+        document.getElementById("myOverlay").style.display = "none";
+    }
+</script>
+
 </body>
 </html>

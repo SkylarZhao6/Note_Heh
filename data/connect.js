@@ -16,14 +16,13 @@ module.exports = function (connected) {
 			}
 
 			// Import documents
-			const User = require("./models/user");
-			const Album = require("./models/album");
-			const List = require("./models/list");
+			const User     = require("./models/user");
+			const Album    = require("./models/album");
+			const List     = require("./models/list");
 			const Notebook = require("./models/notebook");
-			const Note = require("./models/note");
+			const Note     = require("./models/note");
 
 			// queries to database
-
 			// insert a new user
 			function createUser(callback, info) {
 				bcrypt.hash(info.password, 12, (err, hashed) => {
@@ -41,7 +40,6 @@ module.exports = function (connected) {
 						const user = res;
 						delete user.password;
 						user.id = user._id;
-						console.log("user ", user);
 						callback(null, user);
 					});
 				});
@@ -54,7 +52,6 @@ module.exports = function (connected) {
 						callback(err, null);
 						return;
 					}
-
 					if (inputs.password) {
 						bcrypt.compare(inputs.password, user.password, (err, same) => {
 							if (err) {
@@ -70,9 +67,40 @@ module.exports = function (connected) {
 				});
 			}
 
+			// insert a new notebook
+			function createNotebook(callback, { author, title, created }) {
+				Notebook.create({ 
+					author: new mongoose.Types.ObjectID(author), 
+					title, 
+					created 
+				}, (err, res) => {
+					if (err) {
+						callback(err);
+						return;
+					}
+					const notebook = res;
+					notebook.id = notebook._id;
+					callback(null, notebook);
+				})
+			}
+
+			// get notebooks for the author
+			function getNotebook(callback, search) {
+				console.log(search);
+				Notebook.find({
+					author: mongoose.Types.ObjectID(search.user_id)
+				}).map(notebook => ({
+					...notebook, id: notebook._id
+				})).toArray(callback);
+			}
+
+			
+
 			connected(null, {
 				createUser,
 				getUser,
+				createNotebook,
+				getNotebook,
 			});
 		}
 	);

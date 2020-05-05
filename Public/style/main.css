@@ -18,6 +18,7 @@ i {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     align-items: flex-end;
+    justify-content: space-between;
 }
 
 .backbutton {
@@ -25,11 +26,13 @@ i {
     height: 25px;
     position: relative;
     bottom: 15px;
-    left: 20px;
+    left: 5%;
 }
 
-.logoutBtn {
-    right: 20px;
+#logout {
+    position: relative;
+    right: 50%;
+    bottom: 5px;
     text-decoration: none;
     color: white;
 }
@@ -114,6 +117,49 @@ i {
     color: #358E76;
     position: absolute;
     left: 300px;
+}
+
+/* add new notebook overlay */
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.txtInfo {
+    color:grey;
+    box-shadow: 1px 1px 5px;
+    border: #358E76 1px solid;
+    border-radius: 15px;
+    text-indent: 15px;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 30px;
 }
 
 /* menu bar */
