@@ -25,7 +25,7 @@ module.exports = (database, jwt) => {
     const mainRoute = require("./routes/mainRoute")();
     app.use("/main", mainRoute);
 
-    const secureRoute = require("./routes/secureRoute")();
+    const secureRoute = require("./routes/secureRoute")(database, jwt);
     app.use("/secure", secureRoute);
     
     return app;

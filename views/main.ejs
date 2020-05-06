@@ -38,9 +38,10 @@
         <!-- Add a new notebook -->
         <div id="myOverlay" class="overlay">
             <i class="fas fa-times closebtn" onclick="closeOverlay()"></i>
+
             <div class="overlay-content">
-                <form method="GET" action="/secure/note">
-                    <input class="txtInfo" name="notebook" type="text" placeholder="Notebook Title" required></input>
+                <form method="POST" action="/secure/newnotebook">
+                    <input class="txtInfo" name="notebookTitle" type="text" placeholder="Notebook Title" required></input>
                     </br>
 
                     <button type="submit" class="hardbtn">
@@ -49,6 +50,7 @@
                 </form>
             </div>
         </div>
+
     </div>
 
     <%- include('./partials/mainFooter'); %>

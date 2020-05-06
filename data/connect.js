@@ -85,22 +85,22 @@ module.exports = function (connected) {
 			}
 
 			// get notebooks for the author
-			function getNotebook(callback, search) {
-				console.log(search);
-				Notebook.find({
-					author: mongoose.Types.ObjectID(search.user_id)
-				}).map(notebook => ({
-					...notebook, id: notebook._id
-				})).toArray(callback);
-			}
+			// function getNotebook(callback, search) {
+			// 	console.log(search);
+			// 	// return all the notebook for user
+			// 	Notebook.find({
+			// 		author: mongoose.Types.ObjectID(search.user_id)
+			// 	}).map(notebook => ({
+			// 		...notebook, id: notebook._id
+			// 	})).toArray(callback);
+			// }
 
 			
-
 			connected(null, {
 				createUser,
 				getUser,
 				createNotebook,
-				getNotebook,
+				// getNotebook,
 			});
 		}
 	);
