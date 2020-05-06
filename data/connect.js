@@ -70,7 +70,7 @@ module.exports = function (connected) {
 			// insert a new notebook
 			function createNotebook(callback, { author, title, created }) {
 				Notebook.create({ 
-					author: new mongoose.Types.ObjectID(author), 
+					author: new mongoose.Types.ObjectId(author), 
 					title, 
 					created 
 				}, (err, res) => {
@@ -89,7 +89,7 @@ module.exports = function (connected) {
 			// 	console.log(search);
 			// 	// return all the notebook for user
 			// 	Notebook.find({
-			// 		author: mongoose.Types.ObjectID(search.user_id)
+			// 		author: mongoose.Types.ObjectId(search.user_id)
 			// 	}).map(notebook => ({
 			// 		...notebook, id: notebook._id
 			// 	})).toArray(callback);

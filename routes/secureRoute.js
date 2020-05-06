@@ -35,13 +35,14 @@ module.exports = (database, jwt, upload) => {
     router.post("/newnotebook", jwt.verifyToken, (req, res) => {
         database.createNotebook((err, notebook) => {
             if (err) {
+                console.log(err);
                 res.send("error");
                 return;
             }
             console.log(notebook);
             res.redirect("/secure/note");
         }, {
-            author: req.user.user_id,
+            author: req.user._id,
             title: req.body.notebookTitle
         })
     })

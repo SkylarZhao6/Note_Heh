@@ -1,17 +1,20 @@
 const jwt = require("jsonwebtoken");
 
 // verify jwt token
-function verifyToken(payload) {
-    const token = payload.token;
-    const state = jwt.verify(token, process.env.JWT, function (err) {
-		if (err) {
-            console.log(err);
-            // console.log(token);
-			return false;
-		}
-		return true;
-	});
-	return state;
+function verifyToken(req, res, next) {
+	const token = req.cookies.JWT.token;
+	try {
+		jwt.verify(token, process.env.TOKEN_SECRET, function (err, user) {
+			if (err) {
+				console.log(err);
+				return;
+			}
+			req.user = user;
+			next();
+		});
+	} catch (err) {
+		res.send("No token provided");
+	}
 }
 exports.verifyToken = verifyToken;
 
