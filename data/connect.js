@@ -70,7 +70,7 @@ module.exports = function (connected) {
 			// insert a new notebook
 			function createNotebook(callback, { author, title, created }) {
 				Notebook.create({ 
-					author: new mongoose.Types.ObjectId(author), 
+					author: author, 
 					title, 
 					created 
 				}, (err, res) => {
@@ -85,22 +85,35 @@ module.exports = function (connected) {
 			}
 
 			// get notebooks for the author
-			// function getNotebook(callback, search) {
-			// 	console.log(search);
-			// 	// return all the notebook for user
-			// 	Notebook.find({
-			// 		author: mongoose.Types.ObjectId(search.user_id)
-			// 	}).map(notebook => ({
-			// 		...notebook, id: notebook._id
-			// 	})).toArray(callback);
-			// }
+			function getNotebook(callback, search) {
+				// return all the notebook for user
+				const author_id = new mongoose.Types.ObjectId(search.user);
+				Notebook.find({ author: author_id }, (err, doc) => {
+					err ? callback(err, null) : callback(null, doc);
+				})
+			}
 
+			// insert a new note
+			function createNote(callback, { title, content, image, notebook, created }) {
+				Note.create({
+					title,
+					content,
+					image,
+					note
+				})
+			}
+
+	
+
+			// function getNote(callback, search) {
+				
+			// }
 			
 			connected(null, {
 				createUser,
 				getUser,
 				createNotebook,
-				// getNotebook,
+				getNotebook,
 			});
 		}
 	);

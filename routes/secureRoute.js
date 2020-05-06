@@ -14,21 +14,22 @@ module.exports = (database, jwt, upload) => {
         res.render("image");
     })
 
-    router.get("/notebook", (req, res) => {
-        res.render("notebook");
+    router.get("/notebook", jwt.verifyToken, (req, res) => {
+        database.getNotebook((err, notebooks) => {
+            if (err) {
+                console.log(err);
+                res.send("error");
+                return;
+            }
+            // console.log(notebooks);
+            res.render("notebook", { notebooks: notebooks });
+        }, { 
+            user: req.user.user_id 
+        })
+        
     })
 
     router.get("/note", jwt.verifyToken, (req, res) => {
-        // database.getNotebook((err, books) => {
-        //     if (err) {
-        //         res.send("error");
-        //         return;
-        //     }
-        //     res.send(books);
-        //     res.render("note");
-        // }, {
-        //     ...req.query, user_id: req.user.user_id
-        // })
         res.render("note");
     })
 
@@ -39,10 +40,10 @@ module.exports = (database, jwt, upload) => {
                 res.send("error");
                 return;
             }
-            console.log(notebook);
+            // console.log(notebook);
             res.redirect("/secure/note");
         }, {
-            author: req.user._id,
+            author: req.user.user_id,
             title: req.body.notebookTitle
         })
     })

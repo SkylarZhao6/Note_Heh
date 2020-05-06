@@ -6,6 +6,7 @@ const notebookSchema = new mongoose.Schema({
         ref: "User"
     },
     title: String,
+    noteTitle: [],
     created: {
         type: Date, 
         default: Date.now
