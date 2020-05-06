@@ -162,6 +162,13 @@ i {
     height: 30px;
 }
 
+/* add image in new note */
+#addImg {
+    position: absolute;
+    bottom: 10%;
+    right: 0%;
+}
+
 /* menu bar */
 .menucontainer {
     position: fixed;

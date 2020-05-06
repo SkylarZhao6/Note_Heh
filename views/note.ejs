@@ -20,6 +20,30 @@
         <p>Save</p>
     </button>
 
+    <a id="addImg" class="menuitem on">
+        <i class="fas fa-images" onclick="openOverlay()"></i>
+    </a>
+    
+    <div id="myOverlay" class="overlay">
+        <i class="fas fa-times closebtn" onclick="closeOverlay()"></i>
+        <div class="overlay-content">
+            <form method="post" enctype="multipart/form-data">
+                <input class="hardbtn" type="file" name="image"></input>
+                <!-- submit input? -->
+            </form>
+        </div>
+    </div>
+
     <%- include('./partials/noteFooter'); %>
+
+<script>
+    function openOverlay() {
+        document.getElementById("myOverlay").style.display = "block";
+    }
+        
+    function closeOverlay() {
+        document.getElementById("myOverlay").style.display = "none";
+    }
+</script>
 </body>
 </html>
