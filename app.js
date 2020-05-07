@@ -2,10 +2,13 @@ const express      = require("express");
 const cookieParser = require("cookie-parser");
 const cors         = require("cors");
 const app          = express();
+const path         = require("path");
+const upload  = require("./middleware/upload");
 
 module.exports = (database, jwt) => {
     // serve static front-end code
     app.use(express.static("Public"));
+    app.use("/uploads", express.static(path.join(__dirname, "uploads")));
     app.set("view engine", "ejs");
 
     app.use(express.urlencoded({ extended: false }));
@@ -18,15 +21,15 @@ module.exports = (database, jwt) => {
     app.use("/", landingRoute);
 
     // serve auth pages
-    // const authRoute = require("./routes/authRoute.js")({database, authenticate: jwt.authenticateJWT, generateAccessToken: jwt.generateAccessToken});
     const authRoute = require("./routes/authRoute")(database, jwt);
     app.use("/user", authRoute);
 
     const mainRoute = require("./routes/mainRoute")();
     app.use("/main", mainRoute);
 
-    const secureRoute = require("./routes/secureRoute")(database, jwt);
-    app.use("/secure", secureRoute);
+    // serve features pages
+    const secureRoute = require("./routes/secureRoute")(database, jwt, upload.uploadImg);
+    app.use("/secure", jwt.verifyToken, secureRoute);
     
     return app;
 }

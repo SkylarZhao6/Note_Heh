@@ -67,7 +67,6 @@ module.exports = function (connected) {
 				});
 			}
 
-			// insert a new notebook
 			function createNotebook(callback, { author, title, created }) {
 				Notebook.create({ 
 					author: author, 
@@ -84,7 +83,6 @@ module.exports = function (connected) {
 				})
 			}
 
-			// get notebooks for the author
 			function getNotebook(callback, search) {
 				// return all the notebook for user
 				const author_id = new mongoose.Types.ObjectId(search.user);
@@ -94,26 +92,54 @@ module.exports = function (connected) {
 			}
 
 			// insert a new note
-			function createNote(callback, { title, content, image, notebook, created }) {
+			function createNote(callback, { title, content, imagePath, created }) {
 				Note.create({
 					title,
 					content,
-					image,
-					note
+					// image: imagePath,
+					created
+				}, (err, res) => {
+					if (err) {
+						callback(err);
+						return;
+					}
+					const note = res;
+					note.id = note._id;
+					callback(null, note);
 				})
 			}
 
-	
+			function addNoteToBook(callback, { notebook_id, note_id, noteTitle }) {
+				Notebook.findOneAndUpdate(
+					{ _id: new mongoose.Types.ObjectId(notebook_id) },
+					{
+						$push: { notes: { 
+							note_id : new mongoose.Types.ObjectId(note_id), 
+							note_title: noteTitle 
+						}}
+					}, (err, doc) => {
+						err ? callback(err, null) : callback(null, doc);
+				})
+			}
 
-			// function getNote(callback, search) {
-				
-			// }
+			// get a single note
+			function getNote(callback, search) {
+				// return all the note for user
+				const note_id = new mongoose.Types.ObjectId(search.note);
+				Notebook.find({ author: note_id }, (err, doc) => {
+					err ? callback(err, null) : callback(null, doc);
+				})
+			}
+	
 			
 			connected(null, {
 				createUser,
 				getUser,
 				createNotebook,
 				getNotebook,
+				createNote,
+				getNote,
+				addNoteToBook
 			});
 		}
 	);

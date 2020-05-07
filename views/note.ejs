@@ -8,31 +8,30 @@
 <body>
     <%- include('./partials/header'); %>
 
-    <content>
-        <textarea id="title" name="noteTitle" placeholder="Add Title"></textarea>
-    </br>
+    <form method="POST" action="/secure/newnotebook/<%=notebook_id%>" enctype="multipart/form-data">
+        <textarea id="title" name="noteTitle" placeholder="Add Title" required></textarea>
+        </br>
+
         <textarea id="content" name="note" placeholder="Content"></textarea>  
-    </content>
+        </br>
 
-</br>
-
-    <button type="submit" class="hardbtn" name="submit">
-        <p>Save</p>
-    </button>
-
-    <a id="addImg" class="menuitem on">
-        <i class="fas fa-images" onclick="openOverlay()"></i>
-    </a>
-    
-    <div id="myOverlay" class="overlay">
-        <i class="fas fa-times closebtn" onclick="closeOverlay()"></i>
-        <div class="overlay-content">
-            <form method="post" enctype="multipart/form-data">
-                <input class="hardbtn" type="file" name="image"></input>
-                <!-- submit input? -->
-            </form>
+        <!-- upload image in note -->
+        <a id="addImg" class="menuitem on">
+            <i class="fas fa-images" onclick="openOverlay()"></i>
+        </a>
+            
+        <div id="myOverlay" class="overlay">
+            <i class="fas fa-times closebtn" onclick="closeOverlay()"></i>
+            <div class="overlay-content">
+                <input class="hardbtn" type="file" name="noteImage"></input>
+                <input class="btn02" type="submit">Save Image</input>
+            </div>
         </div>
-    </div>
+
+        <button type="submit" class="hardbtn">
+            <p>Save</p>
+        </button>
+    </form>
 
     <%- include('./partials/noteFooter'); %>
 

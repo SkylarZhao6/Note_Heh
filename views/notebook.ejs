@@ -9,18 +9,16 @@
 
     <%- include('./partials/searchbar'); %>
 
-    <%notebooks.forEach(notebook=>{%>
-    <h1 style="color: #266B59; text-align: center;"><%=notebook.title%></h1>
+    <% notebooks.forEach(notebook => { %>
+    <h1 style="color: #266B59; text-align: center;"><%= notebook.title %></h1>
     
-    <!-- <%notebook.noteTile.forEach%> -->
-    <div class="whitebtn">
-        <div class="icon"></div>
-        
-            <p class="bold">Class 2</p>
-            <i class="fas fa-plus" id="contentPlus"></i>
-        </div>
-    </div>
-    <%})%>
+    <% notebook.notes.forEach(note => { %>
+    <a href="/secure/note" class="whitebtn">
+        <p class="bold"><%= note.note_title %></p>
+        <!-- <i class="fas fa-plus" class="contentPlus" style="color: #358E76;"></i>  -->
+    </a>
+    <% }) %>
+    <% }) %>
 
     <%- include('./partials/noteFooter'); %>
 </body>

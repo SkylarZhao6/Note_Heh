@@ -83,7 +83,7 @@ i {
     background-color:#ffffff;
     height: 70px;
     width: 350px;
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
     display: inline-flex;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
@@ -113,11 +113,11 @@ i {
     justify-content: center;
 }
 
-#contentPlus {
-    color: #358E76;
+/* .contentPlus {
     position: absolute;
-    left: 300px;
-}
+    left: 40%;
+    bottom: 30%;
+} */
 
 /* add new notebook overlay */
 .overlay {

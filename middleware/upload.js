@@ -10,9 +10,8 @@ const imgsDir = "images";
 // TODO user avatar saving
 const avatarsDir = "avatars";
 
-// imgs path needed?
 
-const imageMulter = multer({ dest: path.join(publicPath, imgsDir) }).single("image");
+const imageMulter = multer({ dest: path.join(publicPath, imgsDir) }).single("noteImage");
 uploadRouter.use(imageMulter);
 
 exports.uploadImg = uploadRouter;

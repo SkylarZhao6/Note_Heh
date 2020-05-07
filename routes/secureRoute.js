@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const path =require("path")
+const multer= require("multer")
 
 module.exports = (database, jwt, upload) => {
-    // router.get("/", (req, res) => {
-    //     res.render("main");
-    // })
 
     router.get("/list", (req, res) => {
         res.render("list");
@@ -14,39 +13,70 @@ module.exports = (database, jwt, upload) => {
         res.render("image");
     })
 
-    router.get("/notebook", jwt.verifyToken, (req, res) => {
-        database.getNotebook((err, notebooks) => {
-            if (err) {
-                console.log(err);
-                res.send("error");
-                return;
-            }
-            // console.log(notebooks);
-            res.render("notebook", { notebooks: notebooks });
-        }, { 
-            user: req.user.user_id 
-        })
-        
-    })
-
-    router.get("/note", jwt.verifyToken, (req, res) => {
-        res.render("note");
-    })
-
-    router.post("/newnotebook", jwt.verifyToken, (req, res) => {
+    // post a new notebook
+    router.post("/newnotebook", (req, res) => {
         database.createNotebook((err, notebook) => {
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.send("error");
                 return;
             }
-            // console.log(notebook);
-            res.redirect("/secure/note");
+            res.redirect(`/secure/newnotebook/${notebook.id}`);
         }, {
             author: req.user.user_id,
             title: req.body.notebookTitle
         })
     })
 
+    router.route("/newnotebook/:id")
+    // get to note editing page
+    .get((req, res) => {
+        res.render("note", { notebook_id: req.params.id });
+    })
+    // post a new note in the notebook
+    .post(upload, (req, res) => {
+        // console.log(req.file)
+        database.createNote((err, note) => {
+            if (err) {
+                console.log(err);
+                res.send("error");
+                return;
+            }
+            
+            database.addNoteToBook((err, note) => {
+                if (err) {
+                    res.send("error");
+                    return;
+                }
+            }, {
+                notebook_id: req.params.id,
+                note_id: note.id,
+                noteTitle: req.body.noteTitle
+            })
+
+            res.redirect("/secure/notebook");
+        }, {
+            title: req.body.noteTitle,
+            content: req.body.note
+            // imagePath: path.join(`${__dirname}../uploads/images/${req.file.originalName}`)
+        })
+    })
+    
+    // get to notebook overview page
+    router.get("/notebook", (req, res) => {
+        database.getNotebook((err, notebooks) => {
+            if (err) {
+                // console.log(err);
+                res.send("error");
+                return;
+            }
+            console.log(notebooks);
+            res.render("notebook", { notebooks: notebooks });
+        }, { 
+            user: req.user.user_id 
+        }) 
+    })
+
+   
     return router;
 }

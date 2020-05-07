@@ -4,10 +4,6 @@ const noteSchema = new mongoose.Schema({
     title: String,
     content: String,
     image: [],
-    notebook: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Notebook"
-    },
     created: {
         type: Date, 
         default: Date.now
