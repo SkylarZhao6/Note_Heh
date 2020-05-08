@@ -70,7 +70,6 @@ module.exports = (database, jwt, upload) => {
                 res.send("error");
                 return;
             }
-            // console.log(notebooks);
             res.render("notebook", { notebooks: notebooks });
         }, { 
             user: req.user.user_id 
@@ -88,6 +87,20 @@ module.exports = (database, jwt, upload) => {
             res.render("viewNote", { note: note });
         }, { 
             note: req.params.id 
+        }) 
+    })
+
+    // search notes and notebooks by keyword
+    router.post("/notebook/try", (req, res) => {
+        database.getNoteOrBook((err, notebooks) => {
+            if (err) {
+                console.log(err);
+                res.send("error");
+                return;
+            }
+            res.render("notebook", { notebooks: notebooks });
+        }, { 
+            keyword: req.body.keyword
         }) 
     })
 

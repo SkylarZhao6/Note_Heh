@@ -57,7 +57,7 @@ i {
     box-shadow: grey 1px 1px 5px;
 }
 
-/* .SearchBar_Img {
+.SearchBar_Img {
     width: 35px;
     height: 35px;
     border: 2px #358E76 solid;
@@ -66,7 +66,7 @@ i {
     top: 5px;
     left: 260px;
     justify-content: right;
-} */
+}
 
 #sb_form {
     text-indent: 15px;

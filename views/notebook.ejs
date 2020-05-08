@@ -17,8 +17,15 @@
         <p class="bold"><%= note.note_title %></p>
         <!-- <i class="fas fa-plus" class="contentPlus" style="color: #358E76;"></i>  -->
     </a>
- 
+    </br>
+    </br>
     <% }) %>
+   
+
+    <a href="/secure/newnotebook/<%= notebook.id %>" class="hardbtn" style="text-decoration: none;">
+        Add more note
+    </a>
+
     <% }) %>
 
     <%- include('./partials/noteFooter'); %>

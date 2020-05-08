@@ -91,7 +91,6 @@ module.exports = function (connected) {
 				})
 			}
 
-			// insert a new note
 			function createNote(callback, { title, content, imagePath, created }) {
 				Note.create({
 					title,
@@ -125,12 +124,27 @@ module.exports = function (connected) {
 			// get a single note
 			function getNote(callback, search) {
 				const note_id = new mongoose.Types.ObjectId(search.note);
-				Note.findOne({ _id: note_id }, (err, doc) => {
+				Note.findOne({ 
+					_id: note_id 
+				}, (err, doc) => {
 					err ? callback(err, null) : callback(null, doc);
 				})
 			}
 	
-			
+			function getNoteOrBook(callback, search) {
+				const keyword = search.keyword;
+				console.log(keyword);
+				Notebook.find({
+					$or: [ 
+						{ title: { $regex: '.*' + keyword + '.*' } }, 
+						{ notes: { $elemMatch: { note_title: { $regex: '.*' + keyword + '.*' } } } }
+					]
+				}, (err, doc) => {
+					console.log(doc);
+					err ? callback(err, null) : callback(null, doc);
+				})
+			}
+
 			connected(null, {
 				createUser,
 				getUser,
@@ -138,7 +152,8 @@ module.exports = function (connected) {
 				getNotebook,
 				createNote,
 				getNote,
-				addNoteToBook
+				addNoteToBook,
+				getNoteOrBook
 			});
 		}
 	);
