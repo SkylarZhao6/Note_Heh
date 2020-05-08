@@ -13,10 +13,11 @@
     <h1 style="color: #266B59; text-align: center;"><%= notebook.title %></h1>
     
     <% notebook.notes.forEach(note => { %>
-    <a href="/secure/note" class="whitebtn">
+    <a href="/secure/note/<%= note.note_id %>" class="whitebtn">
         <p class="bold"><%= note.note_title %></p>
         <!-- <i class="fas fa-plus" class="contentPlus" style="color: #358E76;"></i>  -->
     </a>
+ 
     <% }) %>
     <% }) %>
 

@@ -70,13 +70,26 @@ module.exports = (database, jwt, upload) => {
                 res.send("error");
                 return;
             }
-            console.log(notebooks);
+            // console.log(notebooks);
             res.render("notebook", { notebooks: notebooks });
         }, { 
             user: req.user.user_id 
         }) 
     })
 
-   
+    // view a note
+    router.get("/note/:id", (req, res) => {
+        database.getNote((err, note) => {
+            if (err) {
+                // console.log(err);
+                res.send("error");
+                return;
+            }
+            res.render("viewNote", { note: note });
+        }, { 
+            note: req.params.id 
+        }) 
+    })
+
     return router;
 }

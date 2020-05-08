@@ -3,7 +3,7 @@ const cookieParser = require("cookie-parser");
 const cors         = require("cors");
 const app          = express();
 const path         = require("path");
-const upload  = require("./middleware/upload");
+const upload       = require("./middleware/upload");
 
 module.exports = (database, jwt) => {
     // serve static front-end code

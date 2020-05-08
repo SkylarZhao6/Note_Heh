@@ -124,9 +124,8 @@ module.exports = function (connected) {
 
 			// get a single note
 			function getNote(callback, search) {
-				// return all the note for user
 				const note_id = new mongoose.Types.ObjectId(search.note);
-				Notebook.find({ author: note_id }, (err, doc) => {
+				Note.findOne({ _id: note_id }, (err, doc) => {
 					err ? callback(err, null) : callback(null, doc);
 				})
 			}
