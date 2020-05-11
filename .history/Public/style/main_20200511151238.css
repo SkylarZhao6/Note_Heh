@@ -34,10 +34,6 @@ i {
     color: white;
 }
 
-.options{
-    margin-top: 15%;
-}
-
 /* search bar */
 .SB_container {
     position: absolute;
@@ -73,8 +69,9 @@ i {
     text-indent: 15px;
     font-family: Montserrat;
     font-size: 10pt;
+    border: white;
     position: absolute;
-    top: 25%;
+    top: 12px;
     width: 240px;
 }
 
