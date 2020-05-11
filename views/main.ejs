@@ -19,14 +19,30 @@
         </br>
         </br>
 
-        <a class="whitebtn" href="/secure/list">
+        <a class="whitebtn"  onclick="openOverlay()">
             <p class="bold">Add List</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>
             </div>
         </a>
-        <br/>
-        <br/>
+
+        <!-- Add a new list -->
+        <div id="myOverlay" class="overlay">
+            <i class="fas fa-times closebtn" onclick="closeOverlay()"></i>
+
+            <div class="overlay-content">
+                <form method="POST" action="/secure/newlist">
+                    <input class="txtInfo" name="listTitle" type="text" placeholder="List Title" required></input>
+                    </br>
+
+                    <button type="submit" class="hardbtn">
+                        <p>Save</p>
+                    </button>
+                </form>
+            </div>
+        </div>
+        </br>
+        </br>
 
         <a class="whitebtn" onclick="openOverlay()">
             <p class="bold">Add Notebook</p>

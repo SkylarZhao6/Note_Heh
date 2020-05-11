@@ -113,11 +113,40 @@ i {
     justify-content: center;
 }
 
-/* .contentPlus {
+.contentPlus {
     position: absolute;
     left: 40%;
     bottom: 30%;
-} */
+}
+
+/* collapsible list items */
+.collapsible {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.collapsible:after {
+  content: '\002B';
+  font-size: 28px;
+  color: #358e76;
+  font-weight: bold;
+  float: right;
+  margin-left: 70%;
+}
+
+.active:after {
+  content: "\2212";
+  height: auto;
+}
+
+.items {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  color: #358E76;
+}
 
 /* add new notebook overlay */
 .overlay {

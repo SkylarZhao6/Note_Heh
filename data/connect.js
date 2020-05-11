@@ -145,34 +145,32 @@ module.exports = function (connected) {
 				})
 			}
 
-			// function getAllList(callback, search) {
-			// 	// return all the notebook for user
-			// 	const author_id = new mongoose.Types.ObjectId(search.user);
-			// 	List.find({ author: author_id }, (err, doc) => {
-			// 		err ? callback(err, null) : callback(null, doc);
-			// 	})
-			// }
+			function getList(callback, search) {
+				// return all the to-do lists for user
+				const author_id = new mongoose.Types.ObjectId(search.user);
+				List.find({ author: author_id }, (err, doc) => {
+					err ? callback(err, null) : callback(null, doc);
+				})
+			}
 
-			// function createNote(callback, { title, content, imagePath, created }) {
-			// 	Note.create({
-			// 		title,
-			// 		content,
-			// 		// image: imagePath,
-			// 		created
-			// 	}, (err, res) => {
-			// 		if (err) {
-			// 			callback(err);
-			// 			return;
-			// 		}
-			// 		const note = res;
-			// 		note.id = note._id;
-			// 		callback(null, note);
-			// 	})
-			// }
-
-			// function createList(callback, )
+			function createList(callback, { author, title, items, created, archive }) {
+				List.create({
+					author,
+					title, 
+					items,
+					created,
+					archive
+				}, (err, res) => {
+					if (err) {
+						callback(err);
+						return;
+					}
+					const list = res;
+					list.id = list._id;
+					callback(null, list);
+				})
+			}
 			
-
 			connected(null, {
 				createUser,
 				getUser,
@@ -181,7 +179,9 @@ module.exports = function (connected) {
 				createNote,
 				getNote,
 				addNoteToBook,
-				getNoteOrBook
+				getNoteOrBook,
+				getList,
+				createList
 			});
 		}
 	);

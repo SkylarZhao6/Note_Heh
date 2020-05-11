@@ -6,12 +6,15 @@ const listSchema = new mongoose.Schema({
         ref: "User"
     },
     title: String,
-    item: [],
+    items: [],
     created: {
         type: Date, 
         default: Date.now
     },
-    archive: Boolean
+    archive: {
+        type: Boolean,
+        default: false
+    }
 });
 
 const List = mongoose.model("List", listSchema);

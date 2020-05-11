@@ -4,9 +4,33 @@ const path =require("path")
 const multer= require("multer")
 
 module.exports = (database, jwt, upload) => {
-
     router.get("/list", (req, res) => {
-        res.render("list");
+        database.getList((err, lists) => {
+            if (err) {
+                // console.log(err);
+                res.send("error");
+                return;
+            }
+            res.render("list", { lists: lists });
+        }, { 
+            user: req.user.user_id 
+        })
+    })
+
+    // post a new list
+    router.post("/newlist", (req, res) => {
+        database.createList((err, list) => {
+            if (err) {
+                // console.log(err);
+                res.send("error");
+                return;
+            }
+            console.log(list);
+            res.redirect("/secure/list");
+        }, {
+            author: req.user.user_id,
+            title: req.body.listTitle
+        })
     })
 
     router.get("/image", (req, res) => {
@@ -91,7 +115,7 @@ module.exports = (database, jwt, upload) => {
     })
 
     // search notes and notebooks by keyword
-    router.post("/notebook/try", (req, res) => {
+    router.post("/notebook/search", (req, res) => {
         database.getNoteOrBook((err, notebooks) => {
             if (err) {
                 console.log(err);
