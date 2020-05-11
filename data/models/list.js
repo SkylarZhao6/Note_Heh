@@ -7,7 +7,6 @@ const listSchema = new mongoose.Schema({
     },
     title: String,
     item: [],
-    // keep the timestamp?
     created: {
         type: Date, 
         default: Date.now

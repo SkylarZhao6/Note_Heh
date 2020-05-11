@@ -145,6 +145,34 @@ module.exports = function (connected) {
 				})
 			}
 
+			// function getAllList(callback, search) {
+			// 	// return all the notebook for user
+			// 	const author_id = new mongoose.Types.ObjectId(search.user);
+			// 	List.find({ author: author_id }, (err, doc) => {
+			// 		err ? callback(err, null) : callback(null, doc);
+			// 	})
+			// }
+
+			// function createNote(callback, { title, content, imagePath, created }) {
+			// 	Note.create({
+			// 		title,
+			// 		content,
+			// 		// image: imagePath,
+			// 		created
+			// 	}, (err, res) => {
+			// 		if (err) {
+			// 			callback(err);
+			// 			return;
+			// 		}
+			// 		const note = res;
+			// 		note.id = note._id;
+			// 		callback(null, note);
+			// 	})
+			// }
+
+			// function createList(callback, )
+			
+
 			connected(null, {
 				createUser,
 				getUser,

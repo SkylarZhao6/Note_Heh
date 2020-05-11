@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%- include('./partials/links'); %>
-    <title>Notebook</title>
+    <title>View Notebooks</title>
 </head>
 <body>
     <%- include('./partials/header'); %>
@@ -11,7 +11,13 @@
 
     <% notebooks.forEach(notebook => { %>
     <h1 style="color: #266B59; text-align: center;"><%= notebook.title %></h1>
-    
+
+    <a href="/secure/newnotebook/<%= notebook.id %>" class="hardbtn" style="text-decoration: none;">
+        Add more note
+    </a>
+    </br>
+    </br>
+
     <% notebook.notes.forEach(note => { %>
     <a href="/secure/note/<%= note.note_id %>" class="whitebtn">
         <p class="bold"><%= note.note_title %></p>
@@ -20,11 +26,6 @@
     </br>
     </br>
     <% }) %>
-   
-
-    <a href="/secure/newnotebook/<%= notebook.id %>" class="hardbtn" style="text-decoration: none;">
-        Add more note
-    </a>
 
     <% }) %>
 
