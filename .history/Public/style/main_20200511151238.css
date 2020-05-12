@@ -18,7 +18,6 @@ i {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     align-items: flex-end;
-    justify-content: space-between;
 }
 
 .backbutton {
@@ -26,19 +25,13 @@ i {
     height: 25px;
     position: relative;
     bottom: 15px;
-    left: 5%;
+    left: 20px;
 }
 
-#logout {
-    position: relative;
-    right: 50%;
-    bottom: 5px;
+.logoutBtn {
+    right: 20px;
     text-decoration: none;
     color: white;
-}
-
-.options{
-    margin-top: 15%;
 }
 
 /* search bar */
@@ -61,7 +54,7 @@ i {
     box-shadow: grey 1px 1px 5px;
 }
 
-.SearchBar_Img {
+/* .SearchBar_Img {
     width: 35px;
     height: 35px;
     border: 2px #358E76 solid;
@@ -70,14 +63,15 @@ i {
     top: 5px;
     left: 260px;
     justify-content: right;
-}
+} */
 
 #sb_form {
     text-indent: 15px;
     font-family: Montserrat;
     font-size: 10pt;
+    border: white;
     position: absolute;
-    top: 25%;
+    top: 12px;
     width: 240px;
 }
 
@@ -86,7 +80,7 @@ i {
     background-color:#ffffff;
     height: 70px;
     width: 350px;
-    margin-left: auto;
+    margin-left: auto; 
     margin-right: auto;
     display: inline-flex;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
@@ -116,89 +110,10 @@ i {
     justify-content: center;
 }
 
-.contentPlus {
+#contentPlus {
+    color: #358E76;
     position: absolute;
-    left: 40%;
-    bottom: 30%;
-}
-
-/* collapsible list items */
-.collapsible {
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
-.collapsible:after {
-  content: '\002B';
-  font-size: 28px;
-  color: #358e76;
-  font-weight: bold;
-  float: right;
-  margin-left: 70%;
-}
-
-.active:after {
-  content: "\2212";
-  height: auto;
-}
-
-.items {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  color: #358E76;
-}
-
-/* add new notebook overlay */
-.overlay {
-    height: 100%;
-    width: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-}
-
-.overlay-content {
-    position: relative;
-    top: 46%;
-    width: 80%;
-    text-align: center;
-    margin-top: 30px;
-    margin: auto;
-}
-
-.closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 40px;
-    cursor: pointer;
-}
-
-.txtInfo {
-    color:grey;
-    box-shadow: 1px 1px 5px;
-    border: #358E76 1px solid;
-    border-radius: 15px;
-    text-indent: 15px;
-    display: inline-block;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 30px;
-}
-
-/* add image in new note */
-#addImg {
-    position: absolute;
-    bottom: 10%;
-    right: 0%;
+    left: 300px;
 }
 
 /* menu bar */
