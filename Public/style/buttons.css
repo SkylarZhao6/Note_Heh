@@ -26,9 +26,6 @@
 .hardbtn, .btn, .btn02{
     height: 40px;
     width: 200px;
-    display: block;
-    margin-left: auto; 
-    margin-right: auto;
     border-radius: 30px;
     align-items: center;
     justify-content: center;
@@ -36,6 +33,7 @@
     transition: all 300ms;
     text-decoration: none;
     display: flex;
+    margin: 0 auto;
 }
 
 .btn {

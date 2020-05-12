@@ -2,21 +2,32 @@
 <html lang="en">
 <head>
     <%- include('./partials/links'); %>
-    <title>Notebook</title>
+    <title>View Notebooks</title>
 </head>
 <body>
     <%- include('./partials/header'); %>
 
     <%- include('./partials/searchbar'); %>
 
-    <h1 style="color: #266B59; text-align: center;">Notebook 1</h1>
+    <% notebooks.forEach(notebook => { %>
+    <h1 style="color: #266B59; text-align: center;"><%= notebook.title %></h1>
 
-    <div class="whitebtn">
-        <div class="icon"></div>
-            <p class="bold">Class 2</p>
-            <i class="fas fa-plus" id="contentPlus"></i>
-        </div>
-    </div>
+    <a href="/secure/newnotebook/<%= notebook.id %>" class="hardbtn" style="text-decoration: none;">
+        Add more note
+    </a>
+    </br>
+    </br>
+
+    <% notebook.notes.forEach(note => { %>
+    <a href="/secure/note/<%= note.note_id %>" class="whitebtn">
+        <p class="bold"><%= note.note_title %></p>
+        <!-- <i class="fas fa-plus" class="contentPlus" style="color: #358E76;"></i>  -->
+    </a>
+    </br>
+    </br>
+    <% }) %>
+
+    <% }) %>
 
     <%- include('./partials/noteFooter'); %>
 </body>
