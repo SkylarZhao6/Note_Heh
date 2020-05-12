@@ -3,7 +3,7 @@
 
 <head>
     <%- include('./partials/links'); -%>
-    <title>Note</title>
+    <title>View Lists</title>
 </head>
 
 <body>
@@ -11,16 +11,48 @@
 
     <%- include('./partials/searchbar'); %>
 
-    <h1 style="color: #266B59; text-align: center; margin-top: 15%;">Today</h1>
+    <h1 style="color: #266B59; text-align: center;">My Lists</h1>
 
-    <div class="whitebtn">
-        <div class="icon"></div>
-        <p class="bold">groceries</p>
-        <i class="fas fa-plus" id="contentPlus"></i>
-    </div>
-    </div>
+    <% lists.forEach(list => { %>
+    <button class="whitebtn collapsible">
+        <p class="bold"><%= list.title %></p>
+    </button>
 
+    <% list.items.forEach(item => { %>
+    <div class="items">
+        <input type="checkbox" name="listItem" value="true"></input>
+        <input type="hidden" name="listItem" value="false"></input>
+        <label></label>
+        </br>
+
+        <input type="checkbox" name="listItem"></input>
+        <input name="listItem"></input>
+    </div>
+    <% }) %>
+    
+    <% }) %>
+
+    <h1 style="color: #266B59; text-align: center;">Archive</h1>
+
+   
     <%- include('./partials/listFooter'); %>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        } 
+    });
+}
+</script>
 </body>
 
 </html>
