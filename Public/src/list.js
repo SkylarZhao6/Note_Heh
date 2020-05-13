@@ -1,3 +1,4 @@
+// list expanding
 var coll = document.getElementsByClassName("collapsible");
 
 for (let i = 0; i < coll.length; i++) {
@@ -12,6 +13,7 @@ for (let i = 0; i < coll.length; i++) {
     });
 }
 
+// checking checkbox
 const all_checkbox = document.querySelectorAll(".checkBox");
 
 all_checkbox.forEach((box, index) => {
@@ -19,7 +21,7 @@ all_checkbox.forEach((box, index) => {
         e.preventDefault();
         const checked = box.checked;
         const list_id = box.getAttribute("list_number");
-        console.log(checked, list_id);
+        // console.log(checked, list_id);
         $.ajax({
             type: "post",
             url: "/secure/list",
