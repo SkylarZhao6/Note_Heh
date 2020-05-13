@@ -140,7 +140,7 @@ module.exports = (database, jwt, upload) => {
     router.post("/notebook/search", (req, res) => {
         database.getNoteOrBook((err, notebooks) => {
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.send("error");
                 return;
             }

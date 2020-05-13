@@ -11,7 +11,7 @@
 
     <%- include('./partials/searchbar'); %>
 
-    <h1 style="color: #266B59; text-align: center;">My Lists</h1>
+    <h1 style="color: #266B59; text-align: center; margin-top: 12%;">My Lists</h1>
 
     <% lists.forEach(list => { %>
     <button class="whitebtn collapsible">
@@ -42,7 +42,7 @@
     <!-- todo after checking all box -->
     <h1 style="color: #266B59; text-align: center;">Archive</h1>
 
-   
+
     <%- include('./partials/listFooter'); %>
 
 <script>
@@ -60,8 +60,6 @@ for (i = 0; i < coll.length; i++) {
         } 
     });
 }
-
-$("checkbox").onclick()
 </script>
 </body>
 

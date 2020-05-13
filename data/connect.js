@@ -134,14 +134,12 @@ module.exports = function (connected) {
 			// search note and notebook by keywords
 			function getNoteOrBook(callback, search) {
 				const keyword = search.keyword;
-				console.log(keyword);
 				Notebook.find({
 					$or: [ 
 						{ title: { $regex: '.*' + keyword + '.*' } }, 
 						{ notes: { $elemMatch: { note_title: { $regex: '.*' + keyword + '.*' } } } }
 					]
 				}, (err, doc) => {
-					console.log(doc);
 					err ? callback(err, null) : callback(null, doc);
 				})
 			}

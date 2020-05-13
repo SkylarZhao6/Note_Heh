@@ -12,10 +12,10 @@
     <%- include('./partials/searchbar'); %>
 
     <% notebooks.forEach(notebook => { %>
-    <h1 style="color: #266B59; text-align: center;"><%= notebook.title %></h1>
+    <h1 style="color: #266B59; margin-top: 12%; text-align: center;"><%= notebook.title %></h1>
 
     <a href="/secure/newnotebook/<%= notebook.id %>" class="hardbtn" style="text-decoration: none;">
-        Add more note
+        Add Notes
     </a>
     </br>
     </br>
@@ -28,7 +28,6 @@
     </br>
     </br>
     <% }) %>
-
     <% }) %>
 
     <%- include('./partials/noteFooter'); %>

@@ -19,6 +19,7 @@ i {
     border-radius: 30px;
     align-items: flex-end;
     justify-content: space-between;
+    z-index:1000;
 }
 
 .backbutton {
@@ -175,7 +176,7 @@ i {
 
 .closebtn {
     position: absolute;
-    top: 20px;
+    top: 15%;
     right: 45px;
     font-size: 40px;
     cursor: pointer;
