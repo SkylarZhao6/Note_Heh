@@ -113,7 +113,7 @@ module.exports = function (connected) {
 					{ _id: new mongoose.Types.ObjectId(notebook_id) },
 					{
 						$push: { notes: { 
-							note_id : new mongoose.Types.ObjectId(note_id), 
+							note_id   : new mongoose.Types.ObjectId(note_id), 
 							note_title: noteTitle 
 						}}
 					}, (err, doc) => {
@@ -130,7 +130,8 @@ module.exports = function (connected) {
 					err ? callback(err, null) : callback(null, doc);
 				})
 			}
-	
+
+			// search note and notebook by keywords
 			function getNoteOrBook(callback, search) {
 				const keyword = search.keyword;
 				console.log(keyword);
@@ -170,6 +171,20 @@ module.exports = function (connected) {
 					callback(null, list);
 				})
 			}
+
+			function createItem(callback, { list_id, item, checkbox }) {
+				List.findOneAndUpdate(
+					{ _id: new mongoose.Types.ObjectId(list_id) },
+					{
+						$push: { items: {
+							item    : item,
+							checkbox: checkbox
+						}}
+					}, (err, doc) => {
+						err ? callback(err, null) : callback(null, doc);
+					}
+				)
+			}
 			
 			connected(null, {
 				createUser,
@@ -181,7 +196,8 @@ module.exports = function (connected) {
 				addNoteToBook,
 				getNoteOrBook,
 				getList,
-				createList
+				createList,
+				createItem
 			});
 		}
 	);

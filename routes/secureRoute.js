@@ -1,10 +1,11 @@
 const express = require("express");
-const router = express.Router();
-const path =require("path")
-const multer= require("multer")
+const router  = express.Router();
+const path    = require("path")
+const multer  = require("multer")
 
 module.exports = (database, jwt, upload) => {
-    router.get("/list", (req, res) => {
+    router.route("/list")
+    .get((req, res) => {
         database.getList((err, lists) => {
             if (err) {
                 // console.log(err);
@@ -16,6 +17,14 @@ module.exports = (database, jwt, upload) => {
             user: req.user.user_id 
         })
     })
+    // .post((req, res) => {
+    //     const checkbox = req.body.checkbox;
+    //     console.log(checkbox.value);
+    //     // if (checkbox) {
+            
+    //     // }
+    // })
+
 
     // post a new list
     router.post("/newlist", (req, res) => {
@@ -31,6 +40,22 @@ module.exports = (database, jwt, upload) => {
             author: req.user.user_id,
             title: req.body.listTitle
         })
+    })
+
+    router.post("/list/newitem/:id", (req, res) => {
+        database.createItem((err, item) => {
+            if (err) {
+                // console.log(err);
+                res.send("error");
+                return;
+            }
+            console.log(req.body.checkbox);
+            res.redirect("/secure/list");
+        }, {
+            list_id : req.params.id,
+            item    : req.body.newItem,
+            checkbox: req.body.checkbox
+        }) 
     })
 
     router.get("/image", (req, res) => {
