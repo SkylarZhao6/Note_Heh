@@ -32,7 +32,7 @@
 
         <!-- add new item in a list -->
         <form method="POST" action="/secure/list/newitem/<%= list.id %>">
-            <input type="checkbox" name="checkbox" value="false"></input>
+            <input type="checkbox"></input>
             <input name="newItem"></input>
         </form>
     </div>
@@ -60,6 +60,8 @@ for (i = 0; i < coll.length; i++) {
         } 
     });
 }
+
+$("checkbox").onclick()
 </script>
 </body>
 

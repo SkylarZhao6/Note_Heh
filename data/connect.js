@@ -178,7 +178,7 @@ module.exports = function (connected) {
 					{
 						$push: { items: {
 							item    : item,
-							checkbox: checkbox
+							checkbox: false
 						}}
 					}, (err, doc) => {
 						err ? callback(err, null) : callback(null, doc);

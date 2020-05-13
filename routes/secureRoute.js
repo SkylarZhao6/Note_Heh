@@ -17,13 +17,11 @@ module.exports = (database, jwt, upload) => {
             user: req.user.user_id 
         })
     })
-    // .post((req, res) => {
-    //     const checkbox = req.body.checkbox;
-    //     console.log(checkbox.value);
-    //     // if (checkbox) {
-            
-    //     // }
-    // })
+    .post((req, res) => {
+        const checkbox = req.body.checkbox;
+        console.log(checkbox);
+        res.render("list", { lists: lists });
+    })
 
 
     // post a new list
@@ -49,12 +47,11 @@ module.exports = (database, jwt, upload) => {
                 res.send("error");
                 return;
             }
-            console.log(req.body.checkbox);
             res.redirect("/secure/list");
         }, {
             list_id : req.params.id,
-            item    : req.body.newItem,
-            checkbox: req.body.checkbox
+            item    : req.body.newItem
+            // checkbox: req.body.checkbox
         }) 
     })
 
