@@ -18,20 +18,28 @@
         <p class="bold"><%= list.title %></p>
     </button>
 
-    <% list.items.forEach(item => { %>
+    <!-- show list items after expanding -->
     <div class="items">
-        <input type="checkbox" name="listItem" value="true"></input>
-        <input type="hidden" name="listItem" value="false"></input>
-        <label></label>
+    <% list.items.forEach(item => { %>    
+        <form method="POST" action="/secure/list">
+            <!-- TODO if checked -->
+            <input type="checkbox" name="checkbox" value="true"></input>
+            <input type="hidden" name="checkbox" value="false"></input>
+            <label><%= item.item %></label>
+        </form>
         </br>
+    <% }) %>
 
-        <input type="checkbox" name="listItem"></input>
-        <input name="listItem"></input>
+        <!-- add new item in a list -->
+        <form method="POST" action="/secure/list/newitem/<%= list.id %>">
+            <input type="checkbox" name="checkbox" value="false"></input>
+            <input name="newItem"></input>
+        </form>
     </div>
+    </br>
     <% }) %>
 
-    <% }) %>
-
+    <!-- todo after checking all box -->
     <h1 style="color: #266B59; text-align: center;">Archive</h1>
 
 
