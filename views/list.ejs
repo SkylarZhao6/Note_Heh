@@ -21,19 +21,20 @@
     <!-- show list items after expanding -->
     <div class="items">
     <% list.items.forEach(item => { %>    
-        <form method="POST" action="/secure/list">
-            <!-- TODO if checked -->
-            <input type="checkbox" name="checkbox" value="true"></input>
-            <input type="hidden" name="checkbox" value="false"></input>
-            <label><%= item.item %></label>
-        </form>
+        <%if (item.checkbox == "true") {%>
+        <input list_number="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true" checked/>
+        <%}else { %>
+        <input list_number="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true"/>
+        <%}%>
+
+        <label><%= item.item %></label>
         </br>
     <% }) %>
 
         <!-- add new item in a list -->
         <form method="POST" action="/secure/list/newitem/<%= list.id %>">
-            <input type="checkbox"></input>
-            <input name="newItem"></input>
+            <input type="checkbox"/>
+            <input name="newItem"/>
         </form>
     </div>
     </br>
@@ -45,22 +46,7 @@
 
     <%- include('./partials/listFooter'); %>
 
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight){
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-        } 
-    });
-}
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/src/list.js"></script>
 </body>
-
 </html>
