@@ -47,7 +47,6 @@ module.exports = (database, jwt, upload) => {
                     res.send("error");
                     return;
                 }
-                // console.log(list);
                 res.redirect("/secure/list");
             },
             {

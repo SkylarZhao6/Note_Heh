@@ -23,6 +23,7 @@ module.exports = function (connected) {
             const Note = require("./models/note");
 
             // queries to database
+
             // insert a new user
             function createUser(callback, info) {
                 bcrypt.hash(info.password, 12, (err, hashed) => {
@@ -71,6 +72,34 @@ module.exports = function (connected) {
                 });
             }
 
+            // get user info on setting page
+            function getUserInfo(callback, search) {
+                User.findOne({ _id: search.user }, (err, user) => {
+                    err ? callback(err, null) : callback(null, user);
+                });
+            }
+
+            // change user password
+            function updatePW(callback, { user, password }) {
+                bcrypt.hash(password, 12, (err, hashed) => {
+                    if (err) {
+                        callback(err);
+                        return;
+                    }
+                    password = hashed;
+
+                    User.findOneAndUpdate(
+                        { _id: user },
+                        {
+                            $set: { password: hashed },
+                        },
+                        (err, doc) => {
+                            err ? callback(err, null) : callback(null, doc);
+                        }
+                    );
+                });
+            }
+
             function createNotebook(callback, { author, title, created }) {
                 Notebook.create(
                     {
@@ -91,7 +120,6 @@ module.exports = function (connected) {
             }
 
             function getNotebook(callback, search) {
-                // return all the notebook for user
                 const author_id = new mongoose.Types.ObjectId(search.user);
                 Notebook.find({ author: author_id }, (err, doc) => {
                     err ? callback(err, null) : callback(null, doc);
@@ -246,6 +274,8 @@ module.exports = function (connected) {
             connected(null, {
                 createUser,
                 getUser,
+                getUserInfo,
+                updatePW,
                 createNotebook,
                 getNotebook,
                 createNote,

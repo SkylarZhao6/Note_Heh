@@ -1,17 +1,52 @@
 const express = require("express");
 const router = express.Router();
 
-module.exports = () => {
+module.exports = (database) => {
     router.get("/", (req, res) => {
         res.render("main");
-    })
-
-    router.get("/profile", (req, res) => {
-        res.render("profile");
-    })
+    });
 
     router.get("/setting", (req, res) => {
-        res.render("setting");
-    })
+        database.getUserInfo(
+            (err, user) => {
+                if (err) {
+                    console.log(err);
+                    res.send("err");
+                    return;
+                }
+                res.render("setting", { user: user });
+            },
+            { user: req.user.user_id }
+        );
+    });
+
+    router.get("/profile", (req, res) => {
+        database.getUserInfo(
+            (err, user) => {
+                if (err) {
+                    console.log(err);
+                    res.send("err");
+                    return;
+                }
+                res.render("profile", { user: user });
+            },
+            { user: req.user.user_id }
+        );
+    });
+
+    router.post("/profile/pwreset", (req, res) => {
+        database.updatePW(
+            (err, user) => {
+                if (err) {
+                    console.log(err);
+                    res.send("err");
+                    return;
+                }
+                res.redirect("/main/setting");
+            },
+            { user: req.user.user_id, password: req.body.password }
+        );
+    });
+
     return router;
-}
+};

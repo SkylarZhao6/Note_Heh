@@ -1,9 +1,9 @@
-const express      = require("express");
+const express = require("express");
 const cookieParser = require("cookie-parser");
-const cors         = require("cors");
-const app          = express();
-const path         = require("path");
-const upload       = require("./middleware/upload");
+const cors = require("cors");
+const app = express();
+const path = require("path");
+const upload = require("./middleware/upload");
 
 module.exports = (database, jwt) => {
     // serve static front-end code
@@ -24,12 +24,16 @@ module.exports = (database, jwt) => {
     const authRoute = require("./routes/authRoute")(database, jwt);
     app.use("/user", authRoute);
 
-    const mainRoute = require("./routes/mainRoute")();
-    app.use("/main", mainRoute);
+    const mainRoute = require("./routes/mainRoute")(database, jwt);
+    app.use("/main", jwt.verifyToken, mainRoute);
 
     // serve features pages
-    const secureRoute = require("./routes/secureRoute")(database, jwt, upload.uploadImg);
+    const secureRoute = require("./routes/secureRoute")(
+        database,
+        jwt,
+        upload.uploadImg
+    );
     app.use("/secure", jwt.verifyToken, secureRoute);
-    
+
     return app;
-}
+};
