@@ -243,18 +243,6 @@ module.exports = function (connected) {
                 );
             }
 
-            function archiveList(callback, { list_id, archiveValue }) {
-                List.findOneAndUpdate(
-                    { _id: new mongoose.Types.ObjectId(list_id) },
-                    {
-                        $set: { archive: archiveValue },
-                    },
-                    (err, doc) => {
-                        err ? callback(err, null) : callback(null, doc);
-                    }
-                );
-            }
-
             connected(null, {
                 createUser,
                 getUser,
@@ -268,7 +256,6 @@ module.exports = function (connected) {
                 createList,
                 createItem,
                 updateItem,
-                archiveList,
             });
         }
     );
