@@ -22,10 +22,14 @@ module.exports = (database, jwt, upload) => {
             );
         })
         .post((req, res) => {
-            console.log(req.body);
             database.updateItem(
-                (err, result) => {
-                    err ? console.log(err) : console.log("list item updated");
+                (err, res) => {
+                    if (err) {
+                        console.log(err);
+                        res.send("error");
+                        return;
+                    }
+                    console.log("list item updated");
                 },
                 {
                     list_id: req.body.list_Id,
@@ -33,7 +37,41 @@ module.exports = (database, jwt, upload) => {
                     itemIndex: req.body.itemID,
                 }
             );
+            database.archiveList(
+                (err, res) => {
+                    if (err) {
+                        console.log(err);
+                        res.send("error");
+                        return;
+                    }
+                    console.log(req.body.archive, req.body.list_Id);
+
+                    // res.redirect("/secure/list");
+                },
+                {
+                    list_id: req.body.list_Id,
+                    archiveValue: req.body.archive,
+                }
+            );
         });
+
+    // router.post("/list/archive", (req, res) => {
+    //     console.log(req.body.archive);
+    //     database.archiveList(
+    //         (err, res) => {
+    //             if (err) {
+    //                 console.log(err);
+    //                 res.send("error");
+    //                 return;
+    //             }
+    //             res.redirect("/secure/list");
+    //         },
+    //         {
+    //             list_id: req.body.list_Id,
+    //             archiveValue: req.body.archive,
+    //         }
+    //     );
+    // });
 
     // post a new list
     router.post("/newlist", (req, res) => {
@@ -43,7 +81,7 @@ module.exports = (database, jwt, upload) => {
                     res.send("error");
                     return;
                 }
-                console.log(list);
+                // console.log(list);
                 res.redirect("/secure/list");
             },
             {

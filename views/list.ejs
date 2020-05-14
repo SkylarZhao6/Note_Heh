@@ -14,36 +14,60 @@
     <h1 style="color: #266B59; text-align: center; margin-top: 12%;">My Lists</h1>
 
     <% lists.forEach(list => { %>
-    <button class="whitebtn collapsible">
-        <p class="bold"><%= list.title %></p>
-    </button>
+        <% if(list.archive == false) {%>
+            <button class="whitebtn collapsible">
+                <p class="bold"><%= list.title %></p>
+            </button>
+            
+            <!-- show list items after expanding -->
+            <div class="items">
+                <% list.items.forEach(item => { %>    
+                    
+                    <%if (item.checkbox == "true") {%>
+                        <input list_id="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true" checked/>
+                    <%}else { %>
+                        <input list_id="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true"/>
+                    <%}%>
 
-    <!-- show list items after expanding -->
-    <div class="items">
-    <% list.items.forEach(item => { %>    
-        <%if (item.checkbox == "true") {%>
-        <input list_number="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true" checked/>
-        <%}else { %>
-        <input list_number="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true"/>
-        <%}%>
+                    <label itemList_id="<%=list._id%>" class="item"><%= item.item %></label>
+                </br>
+                <% }) %>
 
-        <label><%= item.item %></label>
-        </br>
+                <!-- add new item in a list -->
+                <form method="POST" action="/secure/list/newitem/<%= list.id %>">
+                    <input type="checkbox"/>
+                    <input name="newItem" required/>
+                </form>
+            </div>
+            </br>
+        <% } %>
     <% }) %>
 
-        <!-- add new item in a list -->
-        <form method="POST" action="/secure/list/newitem/<%= list.id %>">
-            <input type="checkbox"/>
-            <input name="newItem"/>
-        </form>
-    </div>
-    </br>
-    <% }) %>
-
-    <!-- todo after checking all box -->
+    <!-- after checking all box -->
     <h1 style="color: #266B59; text-align: center;">Archive</h1>
 
+    <% lists.forEach(list => { %>
+        <% if(list.archive == true) {%>
+            <button class="whitebtn collapsible">
+                <p class="bold"><%= list.title %></p>
+            </button>
+            
+            <div class="items">
+                <% list.items.forEach(item => { %>    
 
+                    <%if (item.checkbox == "true") {%>
+                        <input list_id="<%=list._id%>" class="checkBox box" type="checkbox" name="checkbox" value="true" checked/>
+                    <%}else { %>
+                        <input list_id="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true"/>
+                    <%}%>
+                    <label class="item"><%= item.item %></label>
+                </br>
+                <% }) %>
+            </div>
+        </br>
+        <% } %>
+    <% }) %>
+    
     <%- include('./partials/listFooter'); %>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
