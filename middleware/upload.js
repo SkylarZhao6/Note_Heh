@@ -1,5 +1,5 @@
 const multer = require("multer");
-const path   = require("path");
+const path = require("path");
 // router
 const express = require("express");
 const uploadRouter = express.Router();
@@ -10,8 +10,9 @@ const imgsDir = "images";
 // TODO user avatar saving
 const avatarsDir = "avatars";
 
-
-const imageMulter = multer({ dest: path.join(publicPath, imgsDir) }).single("noteImage");
+const imageMulter = multer({ dest: path.join(publicPath, imgsDir) }).single(
+    "noteImage"
+);
 uploadRouter.use(imageMulter);
 
 exports.uploadImg = uploadRouter;

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const path = require("path");
-const multer = require("multer");
+// const path = require("path");
+// const multer = require("multer");
 
 module.exports = (database, jwt, upload) => {
     router
@@ -103,7 +103,6 @@ module.exports = (database, jwt, upload) => {
         })
         // post a new note in the notebook
         .post(upload, (req, res) => {
-            // console.log(req.file)
             database.createNote(
                 (err, note) => {
                     if (err) {
@@ -125,13 +124,13 @@ module.exports = (database, jwt, upload) => {
                             noteTitle: req.body.noteTitle,
                         }
                     );
-
                     res.redirect("/secure/notebook");
                 },
                 {
                     title: req.body.noteTitle,
                     content: req.body.note,
                     // imagePath: path.join(`${__dirname}../uploads/images/${req.file.originalName}`)
+                    imagePath: req.body.noteImage,
                 }
             );
         });
