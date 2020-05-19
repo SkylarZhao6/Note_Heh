@@ -1,7 +1,5 @@
 const express = require("express");
 const router = express.Router();
-// const path = require("path");
-// const multer = require("multer");
 
 module.exports = (database, jwt, upload) => {
     router
@@ -11,7 +9,9 @@ module.exports = (database, jwt, upload) => {
                 (err, lists) => {
                     if (err) {
                         // console.log(err);
-                        res.send("error");
+                        res.render("list", {
+                            msg: "Having trouble loading all the lists...",
+                        });
                         return;
                     }
                     res.render("list", { lists: lists });
@@ -122,15 +122,16 @@ module.exports = (database, jwt, upload) => {
                             notebook_id: req.params.id,
                             note_id: note.id,
                             noteTitle: req.body.noteTitle,
+                            image: req.file,
                         }
                     );
+                    // console.log(req.file);
                     res.redirect("/secure/notebook");
                 },
                 {
                     title: req.body.noteTitle,
                     content: req.body.note,
-                    // imagePath: path.join(`${__dirname}../uploads/images/${req.file.originalName}`)
-                    imagePath: req.body.noteImage,
+                    imagePath: req.file.filename,
                 }
             );
         });
@@ -175,7 +176,9 @@ module.exports = (database, jwt, upload) => {
             (err, notebooks) => {
                 if (err) {
                     // console.log(err);
-                    res.send("error");
+                    res.render("notebook", {
+                        msg: "Error finding notebooks and notes",
+                    });
                     return;
                 }
                 res.render("notebook", { notebooks: notebooks });

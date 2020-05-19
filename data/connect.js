@@ -134,7 +134,7 @@ module.exports = function (connected) {
                     {
                         title,
                         content,
-                        // image: imagePath,
+                        image: imagePath,
                         created,
                     },
                     (err, res) => {
