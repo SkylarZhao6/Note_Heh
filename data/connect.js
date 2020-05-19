@@ -6,7 +6,11 @@ module.exports = function (connected) {
     // connect to Mongo DB
     mongoose.connect(
         process.env.MONGODB_URI,
-        { useNewUrlParser: true, useUnifiedTopology: true },
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+        },
         (err) => {
             if (err) {
                 connected(err);

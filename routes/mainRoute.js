@@ -42,7 +42,10 @@ module.exports = (database) => {
                     res.send("err");
                     return;
                 }
-                res.redirect("/main/setting");
+                res.render("setting", {
+                    user: user,
+                    msg: "Password has been reset!",
+                });
             },
             { user: req.user.user_id, password: req.body.password }
         );

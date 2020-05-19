@@ -125,7 +125,6 @@ module.exports = (database, jwt, upload) => {
                             image: req.file,
                         }
                     );
-                    // console.log(req.file);
                     res.redirect("/secure/notebook");
                 },
                 {

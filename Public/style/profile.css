@@ -1,17 +1,17 @@
 * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     text-align: center;
-    color: #358E76;
+    color: #358e76;
 }
 
-.settingTab{
+.settingTab {
     position: relative;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 350px;
     height: 70px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -32,3 +32,25 @@
 /* .changes button {
     display: inline-block;
 } */
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #358e76;
+    color: white;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+/* The close button */
+.closebtn {
+    position: absolute;
+    left: 92%;
+    top: 10%;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}

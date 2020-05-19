@@ -3,6 +3,7 @@
 
 <head>
     <%- include('./partials/links'); -%>
+    <link rel="stylesheet" href="/style/list.css">
     <title>View Lists</title>
 </head>
 
@@ -13,7 +14,6 @@
 
     <h1 style="color: #266B59; text-align: center; margin-top: 12%;">My Lists</h1>
     <% lists.forEach(list => { %>
-
         <% let count = [] %>
         <% for (let i = 0; i < list.items.length; i++) { %>
             <% if (list.items[i].checkbox === "true") { %>
@@ -21,40 +21,38 @@
             <% } %>
         <% } %>    
                 
-                <% if (count.length != list.items.length || count.length == 0) { %>
-                    <button class="whitebtn collapsible">
-                        <p class="bold"><%= list.title %></p>
-                    </button>
+        <% if (count.length != list.items.length || count.length == 0) { %>
+            <button class="whitebtn collapsible">
+                    <p class="bold"><%= list.title %></p>
+            </button>
                 
-                    <!-- show list items after expanding -->
-                    <div class="items">
-                        <% list.items.forEach(item => { %>    
-                        
-                            <%if (item.checkbox == "true") {%>
-                                <input list_id="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true" checked/>
-                            <%}else { %>
-                                <input list_id="<%=list._id%>" class="checkBox" type="checkbox" name="checkbox" value="true"/>
-                            <%}%>
+            <!-- show list items after expanding -->
+            <div class="items">
+                <% list.items.forEach(item => { %>      
+                    <%if (item.checkbox == "true") {%>
+                        <input list_id="<%=list._id%>" class="checkBox option-input" type="checkbox" name="checkbox" value="true" checked/>
+                    <%}else { %>
+                        <input list_id="<%=list._id%>" class="checkBox option-input" type="checkbox" name="checkbox" value="true"/>
+                    <%}%>
 
-                            <label itemList_id="<%=list._id%>" class="item"><%= item.item %></label>
-                            </br>
-                        <% }) %>
+                        <label itemList_id="<%=list._id%>" class="item"><%= item.item %></label>
+                        </br>
+                <% }) %>
 
-                        <!-- add new item in a list -->
-                        <form method="POST" action="/secure/list/newitem/<%= list.id %>">
-                            <input type="checkbox"/>
-                            <input name="newItem" required/>
-                        </form>
-                    </div>
-                    </br>
-                <% } %>
+                <!-- add new item in a list -->
+                <form method="POST" action="/secure/list/newitem/<%= list.id %>">
+                    <input type="checkbox" class="option-input"/>
+                    <input name="newItem" required/>
+                </form>
+                </div>
+                </br>
+        <% } %>
     <% }) %>
 
     <!-- after checking all box -->
     <h1 style="color: #266B59; text-align: center;">Archive</h1>
 
     <% lists.forEach(list => { %>
-
         <% let count = [] %>
         <% for (let i = 0; i < list.items.length; i++) { %>
             <% if (list.items[i].checkbox === "true") { %>
@@ -62,32 +60,26 @@
             <% } %>
         <% } %>    
                 
-                <% if (count.length == list.items.length && count.length != 0) { %>   
-                    <button class="whitebtn collapsible">
-                        <p class="bold"><%= list.title %></p>
-                    </button>
+        <% if (count.length == list.items.length && count.length != 0) { %>   
+            <button class="whitebtn collapsible">
+                <p class="bold"><%= list.title %></p>
+            </button>
                 
-                    <!-- show list items after expanding -->
-                    <div class="items">
-                        <% list.items.forEach(item => { %>    
+            <!-- show list items after expanding -->
+            <div class="items">
+                <% list.items.forEach(item => { %>    
                         
-                            <%if (item.checkbox == "true") {%>
-                                <input class="checkBox" type="checkbox" onclick="return false;" onkeydown="return false;" checked/>
-                            
-                            <%}%>
+                    <%if (item.checkbox == "true") {%>
+                        <input class="checkBox option-input" type="checkbox" onclick="return false;" onkeydown="return false;" checked/>
+                    <%}%>
 
-                            <label itemList_id="<%=list._id%>" class="item"><%= item.item %></label>
-                            </br>
-                        <% }) %>
+                        <label itemList_id="<%=list._id%>" class="item"><%= item.item %></label>
+                        </br>
+                <% }) %>
 
-                        <!-- add new item in a list -->
-                        <form method="POST" action="/secure/list/newitem/<%= list.id %>">
-                            <input type="checkbox"/>
-                            <input name="newItem" required/>
-                        </form>
-                    </div>
-                    </br>
-                <% } %>
+            </div>
+            </br>
+        <% } %>
     <% }) %>
     
     <%- include('./partials/listFooter'); %>
