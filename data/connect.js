@@ -57,7 +57,7 @@ module.exports = function (connected) {
                         callback(err, null);
                         return;
                     }
-                    if (inputs.password) {
+                    if (inputs.password && user) {
                         bcrypt.compare(
                             inputs.password,
                             user.password,
