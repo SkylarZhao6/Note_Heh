@@ -10,8 +10,8 @@ module.exports = (database) => {
         database.getUserInfo(
             (err, user) => {
                 if (err) {
-                    console.log(err);
-                    res.send("err");
+                    // console.log(err);
+                    res.render("error");
                     return;
                 }
                 res.render("setting", { user: user });
@@ -24,8 +24,8 @@ module.exports = (database) => {
         database.getUserInfo(
             (err, user) => {
                 if (err) {
-                    console.log(err);
-                    res.send("err");
+                    // console.log(err);
+                    res.render("error");
                     return;
                 }
                 res.render("profile", { user: user });
@@ -38,13 +38,13 @@ module.exports = (database) => {
         database.updatePW(
             (err, user) => {
                 if (err) {
-                    console.log(err);
-                    res.send("err");
+                    // console.log(err);
+                    res.render("error");
                     return;
                 }
                 res.render("setting", {
                     user: user,
-                    msg: "Password has been reset!",
+                    msg: "Your password has been reset!",
                 });
             },
             { user: req.user.user_id, password: req.body.password }

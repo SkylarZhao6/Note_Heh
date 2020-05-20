@@ -11,16 +11,32 @@
 
     <!-- options -->
     <div class="options">
-        <a class="whitebtn" href="/secure/image">
+        <a class="whitebtn" onclick="listOverlay()">
             <p class="bold">Add Image</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>
             </div>
         </a>
+
+        <!-- Add a new album -->
+        <div id="listOverlay" class="overlay">
+            <i class="fas fa-times closebtn" onclick="closeListOverlay()"></i>
+
+            <div class="overlay-content">
+                <form method="POST" action="/secure/image">
+                    <input class="txtInfo" name="albumTitle" type="text" placeholder="New Album Title" required></input>
+                    </br>
+
+                    <button type="submit" class="hardbtn">
+                        <p>Save</p>
+                    </button>
+                </form>
+            </div>
+        </div>
         </br>
         </br>
 
-        <a class="whitebtn"  onclick="listOverlay()">
+        <a class="whitebtn" onclick="listOverlay()">
             <p class="bold">Add List</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>

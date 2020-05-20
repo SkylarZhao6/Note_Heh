@@ -9,9 +9,7 @@ module.exports = (database, jwt, upload) => {
                 (err, lists) => {
                     if (err) {
                         // console.log(err);
-                        res.render("list", {
-                            msg: "Having trouble loading all the lists...",
-                        });
+                        res.render("error");
                         return;
                     }
                     res.render("list", { lists: lists });
@@ -25,11 +23,11 @@ module.exports = (database, jwt, upload) => {
             database.updateItem(
                 (err, res) => {
                     if (err) {
-                        console.log(err);
-                        res.send("error");
+                        // console.log(err);
+                        res.render("error");
                         return;
                     }
-                    console.log("list item updated");
+                    // console.log("list item updated");
                 },
                 {
                     list_id: req.body.list_Id,
@@ -44,7 +42,7 @@ module.exports = (database, jwt, upload) => {
         database.createList(
             (err, list) => {
                 if (err) {
-                    res.send("error");
+                    res.render("error");
                     return;
                 }
                 res.redirect("/secure/list");
@@ -61,7 +59,7 @@ module.exports = (database, jwt, upload) => {
             (err, item) => {
                 if (err) {
                     // console.log(err);
-                    res.send("error");
+                    res.render("error");
                     return;
                 }
                 res.redirect("/secure/list");
@@ -83,7 +81,7 @@ module.exports = (database, jwt, upload) => {
             (err, notebook) => {
                 if (err) {
                     // console.log(err);
-                    res.send("error");
+                    res.render("error");
                     return;
                 }
                 res.redirect(`/secure/newnotebook/${notebook.id}`);
@@ -106,15 +104,15 @@ module.exports = (database, jwt, upload) => {
             database.createNote(
                 (err, note) => {
                     if (err) {
-                        console.log(err);
-                        res.send("error");
+                        // console.log(err);
+                        res.render("error");
                         return;
                     }
 
                     database.addNoteToBook(
                         (err, note) => {
                             if (err) {
-                                res.send("error");
+                                res.render("error");
                                 return;
                             }
                         },
@@ -141,7 +139,7 @@ module.exports = (database, jwt, upload) => {
             (err, notebooks) => {
                 if (err) {
                     // console.log(err);
-                    res.send("error");
+                    res.render("error");
                     return;
                 }
                 res.render("notebook", { notebooks: notebooks });
@@ -158,7 +156,7 @@ module.exports = (database, jwt, upload) => {
             (err, note) => {
                 if (err) {
                     // console.log(err);
-                    res.send("error");
+                    res.render("error");
                     return;
                 }
                 res.render("viewNote", { note: note });
@@ -175,9 +173,7 @@ module.exports = (database, jwt, upload) => {
             (err, notebooks) => {
                 if (err) {
                     // console.log(err);
-                    res.render("notebook", {
-                        msg: "Error finding notebooks and notes",
-                    });
+                    res.render("error");
                     return;
                 }
                 res.render("notebook", { notebooks: notebooks });

@@ -9,14 +9,19 @@
     <body>
         <%- include('./partials/header'); %>
 
-        <div class="alert">
+        <!-- if reset password -->
+        <% if (locals.msg) { %>
+        <div class="alert" style="background-color: #358e76;">
             <span
-                class="closebtn"
+                class="closeMsgBtn"
                 onclick="this.parentElement.style.display='none';"
-                >&times;</span
             >
+                &times;
+            </span>
             <%= msg %>
         </div>
+        <% } %>
+
         <!-- user firstname -->
         <h1><%= user.firstname %></h1>
 

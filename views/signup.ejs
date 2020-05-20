@@ -10,6 +10,19 @@
     <div>
         <h1>Sign Up</h1>
 
+        <!-- if reset password -->
+        <% if (locals.msg) { %>
+            <div class="alert" style="background-color: red;">
+                <span
+                    class="closeMsgBtn"
+                    onclick="this.parentElement.style.display='none';"
+                >
+                    &times;
+                </span>
+                <%= msg %>
+            </div>
+        <% } %>
+
         <form class="fields" method="POST" action="/user/register">
             <div class="field">
                 <label>Let's start with your name.</label>

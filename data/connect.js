@@ -72,7 +72,7 @@ module.exports = function (connected) {
                         );
                         return;
                     }
-                    callback(null, null);
+                    callback(null, user);
                 });
             }
 
@@ -102,6 +102,26 @@ module.exports = function (connected) {
                         }
                     );
                 });
+            }
+
+            function createAlbum(callback, { author, title, date }) {
+                Album.create(
+                    {
+                        author: author,
+                        title,
+                        date,
+                        created,
+                    },
+                    (err, res) => {
+                        if (err) {
+                            callback(err);
+                            return;
+                        }
+                        const album = res;
+                        album.id = album._id;
+                        callback(null, album);
+                    }
+                );
             }
 
             function createNotebook(callback, { author, title, created }) {
