@@ -2,8 +2,75 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (database, jwt, upload) => {
-    router.get("/image", (req, res) => {
-        res.render("image");
+    router
+        .route("/image")
+        .get((req, res) => {
+            database.getAlbum(
+                (err, albums) => {
+                    if (err) {
+                        console.log(err);
+                        res.render("error");
+                        return;
+                    }
+                    res.render("image", { albums: albums });
+                },
+                {
+                    user: req.user.user_id,
+                }
+            );
+        })
+        .post((req, res) => {
+            database.starAlbum(
+                (err, res) => {
+                    if (err) {
+                        // console.log(err);
+                        res.render("error");
+                        return;
+                    }
+                    console.log("starred an album");
+                },
+                {
+                    album_id: req.body.album_id,
+                    starred: req.body.starred,
+                }
+            );
+        });
+
+    // post a new album
+    router.post("/newalbum", (req, res) => {
+        database.createAlbum(
+            (err, album) => {
+                if (err) {
+                    // console.log(err);
+                    res.render("error");
+                    return;
+                }
+                res.redirect(`/secure/image`);
+            },
+            {
+                author: req.user.user_id,
+                title: req.body.albumTitle,
+                date: req.body.albumDate,
+            }
+        );
+    });
+
+    // post new image in an album
+    router.post("/newimage/:id", upload, (req, res) => {
+        database.addImageToAlbum(
+            (err, image) => {
+                if (err) {
+                    // console.log(err);
+                    res.render("error");
+                    return;
+                }
+                res.redirect("/secure/image");
+            },
+            {
+                album_id: req.params.id,
+                image: req.file.filename,
+            }
+        );
     });
 
     router

@@ -12,14 +12,31 @@
     <!-- options -->
     <div class="options">
         <!-- album -->
-        <a class="whitebtn">
+        <a class="whitebtn" onclick="albumOverlay()">
             <p class="bold">Add Album</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>
             </div>
         </a>
-    </br>
-    </br>
+
+        <!-- Add a new album -->
+        <div id="albumOverlay" class="overlay">
+            <i class="fas fa-times closebtn" onclick="closeListOverlay()"></i>
+
+            <div class="overlay-content">
+                <form method="POST" action="/secure/newalbum">
+                    <input class="txtInfo" name="albumTitle" type="text" placeholder="New Album Title" required/>
+                    <input class="txtInfo" name="albumDate" type="text" placeholder="Images Taken Date" required/>
+                    </br>
+
+                    <button type="submit" class="hardbtn">
+                        <p>Save</p>
+                    </button>
+                </form>
+            </div>
+        </div>
+        </br>
+        </br>
 
         <!-- list -->
         <a class="whitebtn" onclick="listOverlay()">
@@ -28,7 +45,7 @@
                 <i class="fas fa-plus"></i>
             </div>
         </a>
-        
+
         <!-- Add a new list -->
         <div id="listOverlay" class="overlay">
             <i class="fas fa-times closebtn" onclick="closeListOverlay()"></i>
@@ -54,6 +71,7 @@
                 <i class="fas fa-plus"></i>
             </div>
         </a>
+
         <!-- Add a new notebook -->
         <div id="noteOverlay" class="overlay">
             <i class="fas fa-times closebtn" onclick="closeNoteOverlay()"></i>
@@ -75,6 +93,14 @@
     <%- include('./partials/mainFooter'); %>
 
 <script>
+    // list overlay
+    function albumOverlay() {
+        document.getElementById("albumOverlay").style.display = "block";
+    }   
+    function closeAlbumOverlay() {
+        document.getElementById("albumOverlay").style.display = "none";
+    }
+
     // list overlay
     function listOverlay() {
         document.getElementById("listOverlay").style.display = "block";

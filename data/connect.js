@@ -104,25 +104,58 @@ module.exports = function (connected) {
                 });
             }
 
-            // function createAlbum(callback, { author, title }) {
-            //     Album.create(
-            //         {
-            //             author: author,
-            //             title,
-            //             starred: false,
-            //             created,
-            //         },
-            //         (err, res) => {
-            //             if (err) {
-            //                 callback(err);
-            //                 return;
-            //             }
-            //             const album = res;
-            //             album.id = album._id;
-            //             callback(null, album);
-            //         }
-            //     );
-            // }
+            function createAlbum(callback, { author, title, date }) {
+                Album.create(
+                    {
+                        author: author,
+                        title,
+                        starred: false,
+                        date: date,
+                    },
+                    (err, res) => {
+                        if (err) {
+                            callback(err);
+                            return;
+                        }
+                        const album = res;
+                        album.id = album._id;
+                        callback(null, album);
+                    }
+                );
+            }
+
+            function getAlbum(callback, search) {
+                const author_id = new mongoose.Types.ObjectId(search.user);
+                Album.find({ author: author_id }, (err, doc) => {
+                    err ? callback(err, null) : callback(null, doc);
+                });
+            }
+
+            function addImageToAlbum(callback, { album_id, image }) {
+                Album.findOneAndUpdate(
+                    { _id: new mongoose.Types.ObjectId(album_id) },
+                    {
+                        $push: {
+                            image: image,
+                        },
+                    },
+                    (err, doc) => {
+                        err ? callback(err, null) : callback(null, doc);
+                    }
+                );
+            }
+
+            function starAlbum(callback, { starred, album_id }) {
+                Album.findOneAndUpdate(
+                    { _id: new mongoose.Types.ObjectId(album_id) },
+                    {
+                        $set: { starred: starred },
+                    },
+                    (err, doc) => {
+                        err ? callback(err, null) : callback(null, doc);
+                    }
+                );
+            }
 
             function createNotebook(callback, { author, title, created }) {
                 Notebook.create(
@@ -313,7 +346,10 @@ module.exports = function (connected) {
                 getUser,
                 getUserInfo,
                 updatePW,
-                // createAlbum,
+                createAlbum,
+                getAlbum,
+                starAlbum,
+                addImageToAlbum,
                 createNotebook,
                 getNotebook,
                 createNote,
