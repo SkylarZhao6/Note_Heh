@@ -1,7 +1,6 @@
 * {
     font-family: "Montserrat", sans-serif;
     text-align: center;
-    color: #358e76;
 }
 
 .settingTab {
@@ -22,13 +21,10 @@
     justify-content: center;
     text-align: center;
     top: 30%;
+    color: #358e76;
 }
 
 .changes {
     width: 100%;
     text-align: center;
 }
-
-/* .changes button {
-    display: inline-block;
-} */
