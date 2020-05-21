@@ -7,7 +7,6 @@ const albumSchema = new mongoose.Schema({
     },
     title: String,
     image: [],
-    date: String,
     starred: Boolean,
     created: {
         type: Date,

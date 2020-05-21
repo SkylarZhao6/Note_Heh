@@ -104,25 +104,25 @@ module.exports = function (connected) {
                 });
             }
 
-            function createAlbum(callback, { author, title, date }) {
-                Album.create(
-                    {
-                        author: author,
-                        title,
-                        date,
-                        created,
-                    },
-                    (err, res) => {
-                        if (err) {
-                            callback(err);
-                            return;
-                        }
-                        const album = res;
-                        album.id = album._id;
-                        callback(null, album);
-                    }
-                );
-            }
+            // function createAlbum(callback, { author, title }) {
+            //     Album.create(
+            //         {
+            //             author: author,
+            //             title,
+            //             starred: false,
+            //             created,
+            //         },
+            //         (err, res) => {
+            //             if (err) {
+            //                 callback(err);
+            //                 return;
+            //             }
+            //             const album = res;
+            //             album.id = album._id;
+            //             callback(null, album);
+            //         }
+            //     );
+            // }
 
             function createNotebook(callback, { author, title, created }) {
                 Notebook.create(
@@ -295,11 +295,25 @@ module.exports = function (connected) {
                 );
             }
 
+            // search list by keywords
+            function getListByKeyword(callback, search) {
+                const keyword = search.keyword;
+                List.find(
+                    {
+                        title: { $regex: ".*" + keyword + ".*" },
+                    },
+                    (err, doc) => {
+                        err ? callback(err, null) : callback(null, doc);
+                    }
+                );
+            }
+
             connected(null, {
                 createUser,
                 getUser,
                 getUserInfo,
                 updatePW,
+                // createAlbum,
                 createNotebook,
                 getNotebook,
                 createNote,
@@ -310,6 +324,7 @@ module.exports = function (connected) {
                 createList,
                 createItem,
                 updateItem,
+                getListByKeyword,
             });
         }
     );

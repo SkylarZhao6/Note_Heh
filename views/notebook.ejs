@@ -9,8 +9,16 @@
 <body>
     <%- include('./partials/header'); %>
 
-    <%- include('./partials/searchbar'); %>
-
+    <!-- search bar for note -->
+    <div class="SB_container">
+        <form class="SearchBar" method="POST" action="/secure/notebook/search">   
+            <input placeholder="Looking for something?" id="sb_form" name="keyword"></input>
+            <a class="SearchBar_Img" href="/main/setting"> </a>
+        </form>
+    </div>  
+    </br>
+    </br>
+    
     <% if (notebooks.length == 0) { %>
         <p>No notebook or note contains the keyword, please try again!</p>
     <% } %>

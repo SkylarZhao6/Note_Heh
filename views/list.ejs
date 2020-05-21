@@ -10,7 +10,19 @@
 <body>
     <%- include('./partials/header'); %>
 
-    <%- include('./partials/searchbar'); %>
+    <!-- search bar for lists -->
+    <div class="SB_container">
+        <form class="SearchBar" method="POST" action="/secure/list/search">   
+            <input placeholder="Looking for something?" id="sb_form" name="keyword"></input>
+            <a class="SearchBar_Img" href="/main/setting"> </a>
+        </form>
+    </div>
+    </br>
+    </br>
+
+    <% if (lists.length == 0) { %>
+        <p>No list contains the keyword, please try again!</p>
+    <% } %>
 
     <h1 style="color: #266B59; text-align: center; margin-top: 12%;">My Lists</h1>
     <% lists.forEach(list => { %>

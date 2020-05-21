@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (database, jwt, upload) => {
+    router.get("/image", (req, res) => {
+        res.render("image");
+    });
+
     router
         .route("/list")
         .get((req, res) => {
@@ -71,8 +75,21 @@ module.exports = (database, jwt, upload) => {
         );
     });
 
-    router.get("/image", (req, res) => {
-        res.render("image");
+    // search lists by keyword
+    router.post("/list/search", (req, res) => {
+        database.getListByKeyword(
+            (err, lists) => {
+                if (err) {
+                    console.log(err);
+                    res.render("error");
+                    return;
+                }
+                res.render("list", { lists: lists });
+            },
+            {
+                keyword: req.body.keyword,
+            }
+        );
     });
 
     // post a new notebook
