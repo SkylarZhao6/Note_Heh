@@ -32,25 +32,8 @@
     border-bottom: 1px solid #bec0c5;
 }
 
-.buttons {
-    display: flex;
-    margin: 5px;
-}
-
-/* .btnLeft {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-} */
-
-.imgs {
-    display: flex;
-    background-size: cover;
-    background-position: center;
-}
-
-.imgs * {
-    background-size: cover;
-    background-position: center;
-    width: 100px;
-    height: 120px;
+.carousel_border * {
+    align-items: center;
+    text-align: center;
+    margin: auto;
 }

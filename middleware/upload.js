@@ -15,9 +15,4 @@ const imageMulter = multer({
 }).single("noteImage");
 uploadRouter.use(imageMulter);
 
-// const albumMulter = multer({
-//     dest: path.join(publicPath, albumsDir),
-// }).single("albumImage");
-// uploadRouter.use(albumMulter);
-
 exports.uploadImg = uploadRouter;

@@ -157,6 +157,17 @@ module.exports = function (connected) {
                 );
             }
 
+            function getStarredAlbum(callback, { user, starred }) {
+                Album.find(
+                    {
+                        $and: [{ author: user }, { starred: starred }],
+                    },
+                    (err, doc) => {
+                        err ? callback(err, null) : callback(null, doc);
+                    }
+                );
+            }
+
             function createNotebook(callback, { author, title, created }) {
                 Notebook.create(
                     {
@@ -349,6 +360,7 @@ module.exports = function (connected) {
                 createAlbum,
                 getAlbum,
                 starAlbum,
+                getStarredAlbum,
                 addImageToAlbum,
                 createNotebook,
                 getNotebook,

@@ -73,6 +73,23 @@ module.exports = (database, jwt, upload) => {
         );
     });
 
+    router.get("/album/starred", (req, res) => {
+        database.getStarredAlbum(
+            (err, albums) => {
+                if (err) {
+                    // console.log(err);
+                    res.render("error");
+                    return;
+                }
+                res.render("image", { albums: albums });
+            },
+            {
+                user: req.user.user_id,
+                starred: true,
+            }
+        );
+    });
+
     router
         .route("/list")
         .get((req, res) => {
