@@ -11,29 +11,23 @@
 
     <!-- options -->
     <div class="options">
-        <a class="whitebtn" href="/secure/image">
-            <p class="bold">Add Image</p>
+        <!-- album -->
+        <a class="whitebtn" onclick="albumOverlay()">
+            <p class="bold">Add Album</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>
             </div>
         </a>
-        </br>
-        </br>
 
-        <a class="whitebtn"  onclick="openOverlay()">
-            <p class="bold">Add List</p>
-            <div class="plusbtn">
-                <i class="fas fa-plus"></i>
-            </div>
-        </a>
-        
-        <!-- Add a new list -->
-        <div id="myOverlay" class="overlay">
-            <i class="fas fa-times closebtn" onclick="closeOverlay()"></i>
+        <!-- Add a new album -->
+        <div id="albumOverlay" class="overlay">
+            <i class="fas fa-times closebtn" onclick="closeListOverlay()"></i>
 
             <div class="overlay-content">
-                <form method="POST" action="/secure/newlist">
-                    <input class="txtInfo" name="listTitle" type="text" placeholder="List Title" required></input>
+                <form method="POST" action="/secure/newalbum">
+                    <input class="txtInfo" name="albumTitle" type="text" placeholder="New Album Title" required/>
+                    </br>
+                    <input class="txtInfo" name="albumDate" type="text" placeholder="Images Taken Date" required/>
                     </br>
 
                     <button type="submit" class="hardbtn">
@@ -45,7 +39,34 @@
         </br>
         </br>
 
-        <a class="whitebtn" onclick="openOverlay()">
+        <!-- list -->
+        <a class="whitebtn" onclick="listOverlay()">
+            <p class="bold">Add List</p>
+            <div class="plusbtn">
+                <i class="fas fa-plus"></i>
+            </div>
+        </a>
+
+        <!-- Add a new list -->
+        <div id="listOverlay" class="overlay">
+            <i class="fas fa-times closebtn" onclick="closeListOverlay()"></i>
+
+            <div class="overlay-content">
+                <form method="POST" action="/secure/newlist">
+                    <input class="txtInfo" name="listTitle" type="text" placeholder="New List Title" required/>
+                    </br>
+
+                    <button type="submit" class="hardbtn">
+                        <p>Save</p>
+                    </button>
+                </form>
+            </div>
+        </div>
+        </br>
+        </br>
+
+        <!-- notebook -->
+        <a class="whitebtn" onclick="noteOverlay()">
             <p class="bold">Add Notebook</p>
             <div class="plusbtn">
                 <i class="fas fa-plus"></i>
@@ -53,12 +74,12 @@
         </a>
 
         <!-- Add a new notebook -->
-        <div id="myOverlay" class="overlay">
-            <i class="fas fa-times closebtn" onclick="closeOverlay()"></i>
+        <div id="noteOverlay" class="overlay">
+            <i class="fas fa-times closebtn" onclick="closeNoteOverlay()"></i>
 
             <div class="overlay-content">
                 <form method="POST" action="/secure/newnotebook">
-                    <input class="txtInfo" name="notebookTitle" type="text" placeholder="Notebook Title" required></input>
+                    <input class="txtInfo" name="notebookTitle" type="text" placeholder="New Notebook Title" required/>
                     </br>
 
                     <button type="submit" class="hardbtn">
@@ -73,16 +94,30 @@
     <%- include('./partials/mainFooter'); %>
 
 <script>
-    function openOverlay() {
-        document.getElementById("myOverlay").style.display = "block";
+    // list overlay
+    function albumOverlay() {
+        document.getElementById("albumOverlay").style.display = "block";
+    }   
+    function closeAlbumOverlay() {
+        document.getElementById("albumOverlay").style.display = "none";
     }
-        
-    function closeOverlay() {
-        document.getElementById("myOverlay").style.display = "none";
+
+    // list overlay
+    function listOverlay() {
+        document.getElementById("listOverlay").style.display = "block";
+    }   
+    function closeListOverlay() {
+        document.getElementById("listOverlay").style.display = "none";
+    }
+
+    // note overlay
+    function noteOverlay() {
+        document.getElementById("noteOverlay").style.display = "block";
+    }   
+    function closeNoteOverlay() {
+        document.getElementById("noteOverlay").style.display = "none";
     }
 </script>
-
-
 </body>
 
 </html>

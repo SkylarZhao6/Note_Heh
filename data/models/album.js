@@ -3,16 +3,12 @@ const mongoose = require("mongoose");
 const albumSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
     },
     title: String,
     image: [],
-    date: Date,
     starred: Boolean,
-    created: {
-        type: Date, 
-        default: Date.now
-    }
+    date: String,
 });
 
 const Album = mongoose.model("Album", albumSchema);

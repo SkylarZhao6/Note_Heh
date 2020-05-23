@@ -20,38 +20,20 @@
     text-align: center;
     margin-top: 2%;
     margin-bottom: 2%;
-
 }
 
-.carousel_border{
+.carousel_border {
     position: absolute;
     width: 97%;
     top: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom: 1px solid #bec0c5;
 }
 
-.buttons{
-    display: flex;
-    margin: 5px;
+.carousel_border * {
+    align-items: center;
+    text-align: center;
+    margin: auto;
 }
-
-/* .btnLeft {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-} */
-
-.imgs{
-    display: flex;
-    background-size: cover;
-    background-position: center;
-}
-
-.imgs * {
-    background-size: cover;
-    background-position: center;
-    width: 100px;
-    height: 120px;
-}
-

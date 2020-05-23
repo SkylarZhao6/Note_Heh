@@ -9,10 +9,18 @@
     <%- include('./partials/header'); %>
 
     <p id="title" name="noteTitle"><%= note.title %></p>
-     </br>
+    </br>
 
-    <p id="content" name="note"><%= note.content %></p>  
+    <% if (note.content) { %>
+        <p id="content" name="note"><%= note.content %></p>  
+    <% } %>
+    
+    <% note.image.forEach(image => { %>
+        <img src="/uploads/images/<%= image %>" height="300px" width="400px">
+    <% }) %>
 
     <%- include('./partials/noteFooter'); %>
 </body>
+
+<script src="/src/goback.js"></script>
 </html>

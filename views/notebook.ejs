@@ -9,13 +9,23 @@
 <body>
     <%- include('./partials/header'); %>
 
-    <%- include('./partials/searchbar'); %>
+    <!-- search bar for note -->
+    <div class="SB_container">
+        <form class="SearchBar" method="POST" action="/secure/notebook/search">   
+            <input placeholder="Looking for something?" id="sb_form" name="keyword"></input>
+            <a href="/main/setting">
+                <img src="/uploads/profile_pic.png" width="40px" height="40px" class="SearchBar_Img">
+            </a>
+        </form>
+    </div>  
+    </br>
+    </br>
 
     <% notebooks.forEach(notebook => { %>
     <h1 style="color: #266B59; margin-top: 12%; text-align: center;"><%= notebook.title %></h1>
 
     <a href="/secure/newnotebook/<%= notebook.id %>" class="hardbtn" style="text-decoration: none;">
-        Edit Notes
+        Add Notes
     </a>
     </br>
     </br>
@@ -23,15 +33,13 @@
     <% notebook.notes.forEach(note => { %>
     <a href="/secure/note/<%= note.note_id %>" class="whitebtn">
         <p class="bold"><%= note.note_title %></p>
-        <!-- <i class="fas fa-plus" class="contentPlus" style="color: #358E76;"></i>  -->
     </a>
     </br>
     </br>
     <% }) %>
-
     <% }) %>
 
     <%- include('./partials/noteFooter'); %>
 </body>
-
+<script src="/src/goback.js"></script>
 </html>

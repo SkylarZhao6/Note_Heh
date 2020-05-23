@@ -1,34 +1,44 @@
 /* button text */
-.btn p, .btn span, .btn02 p, .btn02 span, .hardbtn p, .hardbtn span {
+.btn p,
+.btn span,
+.btn02 p,
+.btn02 span,
+.hardbtn p,
+.hardbtn span {
     user-select: none;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
-    Letter-Spacing: 0.50px;
-    Font-Size: 18px;
-    Line-Height: 22px;
+    letter-spacing: 0.5px;
+    font-size: 18px;
+    line-height: 22px;
     display: contents;
     align-self: center;
 }
 
-.btn p, .btn span {
+.btn p,
+.btn span {
     color: #f7f7f7;
 }
 
-.hardbtn{
+.hardbtn {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.btn02 p, .btn02 span {
+.btn02 p,
+.btn02 span {
     color: #000000;
 }
 
-.hardbtn p, .hardbtn span {
+.hardbtn p,
+.hardbtn span {
     color: #ffffff;
 }
 
 /* Button */
-.hardbtn, .btn, .btn02{
+.hardbtn,
+.btn,
+.btn02 {
     height: 40px;
     width: 200px;
     border-radius: 30px;
@@ -80,13 +90,13 @@
 }
 
 .btn:hover {
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     transform: scale(1.2);
     transition: all 0.1s;
 }
 
 .hardbtn:hover {
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     transform: scale(1.2);
     transition: all 0.1s;
 }
@@ -104,13 +114,13 @@
 }
 
 .btn02:hover {
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     transform: scale(1.2);
     transition: all 0.1s;
 }
 
 .btn02:active {
-    box-shadow: inset 20px 20px 47px #96a499,inset -20px -20px 47px #faffff;
+    box-shadow: inset 20px 20px 47px #96a499, inset -20px -20px 47px #faffff;
     transition: all 0.1s;
     transform: translateY(2px);
 }

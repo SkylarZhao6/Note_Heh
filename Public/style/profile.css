@@ -1,17 +1,16 @@
 * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     text-align: center;
-    color: #358E76;
 }
 
-.settingTab{
+.settingTab {
     position: relative;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 350px;
     height: 70px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -22,13 +21,10 @@
     justify-content: center;
     text-align: center;
     top: 30%;
+    color: #358e76;
 }
 
 .changes {
     width: 100%;
     text-align: center;
 }
-
-/* .changes button {
-    display: inline-block;
-} */
