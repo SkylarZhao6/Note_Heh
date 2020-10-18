@@ -17,23 +17,26 @@
             </a>
         </form>
     </div>
-    </br>
-    </br>
+
+</br>
+</br>
+</br>
 
     <div class="albumOption">
-        <a>
+        <a href="/secure/image">
             <p>All</p>
         </a>
 
-        <a>
+        <a href="/secure/image">
             <p>Recent</p>
         </a>
 
-        <a href="/secure/album/starred" style="color: #358e76">
+        <a href="/secure/album/starred">
             <p>Starred</p>
         </a>
     </div>
 
+</br>
     <% albums.forEach(album => { %>
         <div class="carousel_border">
             <!-- images -->
@@ -77,7 +80,8 @@
                     <i class="fas fa-star star" album_id="<%=album._id%>" style="color: grey"></i>
                 <% } %>
             
-                <a onclick="openOverlay()" class="hardbtn">
+                </br>
+                <a onclick="openOverlay()" class="hardbtn" style="color: white; font-family: Montserrat; font-size: 15px;">
                     Add more images
                 </a>
             

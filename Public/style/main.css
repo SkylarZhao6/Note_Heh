@@ -6,25 +6,30 @@ i {
     color: #ffffff;
 }
 
-/* The alert message box */
+/* Alert message box */
 .alert {
+    position: relative;
+    width: 260px;
     padding: 20px;
-    color: white;
     margin-bottom: 15px;
+    border-radius: 10px;
     font-size: 15px;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* The close button */
-.closeMsgbBtn {
+/* Close button */
+.closeMsgBtn {
     position: absolute;
-    left: 92%;
-    top: 10%;
+    top: 2px;
+    right: 7px;
     color: white;
     font-weight: bold;
-    font-size: 22px;
-    line-height: 20px;
+    font-size: 25px;
+    line-height: 30px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 /* header nav bar */
@@ -72,13 +77,12 @@ i {
     position: absolute;
     top: 12%;
     left: 50%;
-    margin-right: -50%;
     transform: translate(-50%, -50%);
 }
 
 .SearchBar {
     border-radius: 50px;
-    border: #358e76 2px solid;
+    border: 1px #358e76 solid;
     height: 45px;
     width: 300px;
     text-indent: 15px;
@@ -90,7 +94,7 @@ i {
 .SearchBar_Img {
     width: 35px;
     height: 35px;
-    border: 2px #358e76 solid;
+    border: 1px #358e76 solid;
     border-radius: 50px;
     position: absolute;
     top: 5px;
@@ -101,10 +105,11 @@ i {
 #sb_form {
     text-indent: 15px;
     font-family: Montserrat;
-    font-size: 10pt;
+    font-size: 15px;
     position: absolute;
     top: 25%;
     width: 240px;
+    border: hidden;
 }
 
 /* add new contents */
@@ -249,7 +254,6 @@ i {
 .menuitem {
     padding: 10px;
     margin: 25px;
-    border: #ffffff00 1px solid;
     border-radius: 15%;
 }
 

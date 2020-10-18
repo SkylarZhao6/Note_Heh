@@ -12,19 +12,6 @@
 
     <h1>Welcome Back!</h1>
 
-
-    <% if (locals.msg) { %>
-        <div class="alert" style="background-color: red;">
-            <span
-                class="closeMsgBtn"
-                onclick="this.parentElement.style.display='none';"
-            >
-                &times;
-            </span>
-            <%= msg %>
-        </div>
-    <% } %>
-
     <form class="fields" method="POST" action="/user/signin">
         <div class="field">
             <input class="txtInfo" name="email" type="text" placeholder="Email" required></input> 
@@ -33,7 +20,20 @@
         </div> 
         
         </br>
-        </br>
+
+    <!-- If wrong password -->
+    <% if (locals.msg) { %>
+        <div class="alert" style="background-color: #dc143c;">
+            <span
+                class="closeMsgBtn"
+                onclick="this.parentElement.style.display='none';"
+            >
+                &times;
+            </span>
+            <%= msg %>            
+        </div>
+    <% } %>
+
         <button type="submit" class="hardbtn">
             <p>Log In</p>
         </button>
