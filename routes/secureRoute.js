@@ -241,7 +241,7 @@ module.exports = (database, jwt, upload) => {
                 {
                     title: req.body.noteTitle,
                     content: req.body.note,
-                    imagePath: req.file.filename,
+                    // imagePath: req.file.filename,
                 }
             );
         });
