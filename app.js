@@ -35,5 +35,9 @@ module.exports = (database, jwt) => {
     );
     app.use("/secure", jwt.verifyToken, secureRoute);
 
+    app.get("*", (req, res) => {
+        res.render("error");
+    })
+
     return app;
 };

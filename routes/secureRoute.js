@@ -176,7 +176,7 @@ module.exports = (database, jwt, upload) => {
         );
     });
 
-    // post a new notebook
+    // add new notebook to database
     router.post("/newnotebook", (req, res) => {
         database.createNotebook(
             (err, notebook) => {
@@ -198,7 +198,19 @@ module.exports = (database, jwt, upload) => {
         .route("/newnotebook/:id")
         // get to note editing page
         .get((req, res) => {
-            res.render("note", { notebook_id: req.params.id });
+            database.getNotebookbyId(
+                (err, notebook) => {
+                    if (err) {
+                        console.log(err);
+                        res.render("error");
+                        return;
+                    }
+                    res.render("note", { notebook: notebook, notebook_id: req.params.id });
+                },
+                {
+                    notebook: req.params.id
+                }
+            )
         })
         // post a new note in the notebook
         .post(upload, (req, res) => {
@@ -229,7 +241,7 @@ module.exports = (database, jwt, upload) => {
                 {
                     title: req.body.noteTitle,
                     content: req.body.note,
-                    imagePath: req.file.filename,
+                    // imagePath: req.file.filename,
                 }
             );
         });

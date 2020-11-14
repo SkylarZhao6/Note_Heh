@@ -194,6 +194,13 @@ module.exports = function (connected) {
                 });
             }
 
+            function getNotebookbyId(callback, search) {
+                const notebook_id = new mongoose.Types.ObjectId(search.notebook);
+                Notebook.findOne({ _id: notebook_id }, (err, doc) => {
+                    err ? callback(err, null) : callback(null, doc);
+                })
+            }
+
             function createNote(
                 callback,
                 { title, content, imagePath, created }
@@ -364,6 +371,7 @@ module.exports = function (connected) {
                 addImageToAlbum,
                 createNotebook,
                 getNotebook,
+                getNotebookbyId,
                 createNote,
                 getNote,
                 addNoteToBook,

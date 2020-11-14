@@ -1,31 +1,26 @@
 .albumOption {
-    position: absolute;
-    width: 97%;
-    top: 15%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: space-evenly;
-    border-bottom: 1px solid #bec0c5;
+    border-bottom: 1px#bec0c5 solid;
+}
+
+.albumOption a {
     color: #358e76;
 }
 
 .albumOption a:hover {
     background: #358e76;
-    color: white;
-    border-radius: 11px;
+    border-radius: 10px;
     width: 70px;
     height: 30px;
-    display: table;
-    align-items: center;
-    align-content: center;
+    color: #ffffff;
     text-align: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    text-decoration: none;
 }
 
 .carousel_border {
-    position: absolute;
-    width: 97%;
-    top: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
